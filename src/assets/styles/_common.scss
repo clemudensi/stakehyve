@@ -1,0 +1,43 @@
+/** imports */
+
+/** constants */
+//colors
+$white: #ffffff;
+$backgroundColor: #000000;
+$faintWhite: rgba(255, 255, 255, 0.7);
+$faintWhiteTextOpacity: 0.7;
+$transparent: rgba(0, 0, 0, 0);
+$buyColor: #04a87f;
+$sellColor: #ff5a68;
+
+//sizing
+$fullWidth: 100%;
+$sectionGap: 0.5rem;
+
+// functions
+
+// others
+.hide {
+  display: none;
+}
+
+.full__width {
+  width: 100%;
+}
+
+.table__cell {
+  background-color: transparent;
+  color: $white;
+  text-align: left;
+  opacity: $faintWhiteTextOpacity;
+  text-transform: capitalize;
+  padding: $sectionGap/3;
+  font-size: 9px;
+}
+
+.link__cell {
+  max-width: 5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: underline;
+}

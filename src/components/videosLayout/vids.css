@@ -1,0 +1,20 @@
+.adj img{
+    height: 48px !important;
+    width: 48px !important;
+}
+.feature-text{
+    margin-top: 11px;
+}
+.container-xxl{
+    margin-top: 50px;
+}
+.btn-explore{
+    border: 2px solid #ffb400; padding: 12px 30px;
+}
+.mtop{
+    margin-top: 60px;
+}
+.icon-style{
+    height: 48px;
+    width: 48px;
+}

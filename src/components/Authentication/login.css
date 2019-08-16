@@ -1,0 +1,32 @@
+.ath-body{
+    box-shadow: 0 1px 46px -4px rgba(0,0,0,.28);
+    border-top: 3px solid #05b169;
+    background: #343d45;
+    color: #fff;
+
+}
+.signlog{
+    height: 58px;
+}
+.ath-heading{
+    color: #fff;
+    font-weight: 350;
+}
+.tc-default, .tc-default a{
+    color: #343d45 !important;
+}
+.adj-size{
+    margin: auto;
+    display: block;
+    height: 100px;
+}
+.ath-tite{
+    font-size: 30px;
+    margin-top: 20px;
+}
+.txtc{
+    text-align: center
+}
+.mTop-40{
+    margin-top: 40px;
+}

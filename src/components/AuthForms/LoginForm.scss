@@ -1,0 +1,44 @@
+@import '../../assets/styles/common';
+
+.form__container {
+  @extend .full__width;
+  margin-top: 0;
+  padding: $sectionGap 4*$sectionGap;
+  .form__title {
+      @extend .full__width;
+      font-size: 1.2rem;
+      text-align: center;
+      padding:  2*$sectionGap;
+  }
+  label {
+      @extend .full__width;
+      color: $faintWhite;
+      padding-bottom: $sectionGap;
+      display: inline-block;
+      text-transform: capitalize;
+  }
+  div.field.signalz__input {
+      div.ui.input{
+          input{
+            background-color: transparent;
+            color: $white;
+            border: 0.5px solid $faintWhite;
+            font-family: IBMP;
+            &::placeholder {
+                color: $faintWhite
+            }
+            &:focus {
+                border: 0.5px solid $white;
+            }
+          }
+      }
+  }
+  .field{
+      .button{
+          @extend .full__width;
+          font-family: IBMP;
+          background-color: $white;
+          margin-top: 3*$sectionGap
+      }
+  }
+}

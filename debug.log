@@ -1,0 +1,27 @@
+[0718/201040.339:ERROR:process_info.cc(611)] range at 0xd5823fe000, size 0x2000 fully unreadable
+[0718/201041.038:ERROR:process_info.cc(611)] range at 0xd580d0c000, size 0x1788 fully unreadable
+[0807/131132.728:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0812/070407.946:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0812/071407.963:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0812/071407.963:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0812/071907.954:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0812/080742.749:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0812/082242.749:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0812/083742.754:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0812/085242.756:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0812/090742.757:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0812/134909.360:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0812/140409.369:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0812/141909.370:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0812/143409.371:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0812/144909.372:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0812/150409.374:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0812/151909.704:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0812/153409.706:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0812/185045.814:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0812/190545.913:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0812/192045.926:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0812/193545.936:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0812/195046.000:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0812/222140.579:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0814/235801.150:ERROR:crash_report_database_win.cc(428)] unexpected header

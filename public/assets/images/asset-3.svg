@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="182.61" height="163.266" viewBox="0 0 182.61 163.266">
+  <g id="_003-film" data-name="003-film" transform="translate(0 -2.5)">
+    <line id="Line_1" data-name="Line 1" x1="25.569" y2="55.128" transform="translate(43.795 109.31)" fill="none" stroke="#7383bf" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+    <line id="Line_2" data-name="Line 2" x2="25.569" y2="55.128" transform="translate(69.364 109.31)" fill="none" stroke="#7383bf" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+    <path id="Path_44" data-name="Path 44" d="M81.86,96.258l-43.1-41.187a6.108,6.108,0,0,1,.131-8.71l43.1-39.782A6.009,6.009,0,0,1,92.128,11V91.969A6.008,6.008,0,0,1,81.86,96.258Z" transform="translate(90.483 5.913)" fill="#efce4a"/>
+    <path id="Path_45" data-name="Path 45" d="M120,109.31H13.062A13.061,13.061,0,0,1,0,96.248V16.089A13.63,13.63,0,0,1,13.589,2.5h107.2a13.59,13.59,0,0,1,13.589,13.589V94.932A14.421,14.421,0,0,1,120,109.31Z" transform="translate(0 0)" fill="#363e4b"/>
+    <circle id="Ellipse_2" data-name="Ellipse 2" cx="18.95" cy="18.95" r="18.95" transform="translate(20.673 23.173)" fill="#efce4a"/>
+    <line id="Line_3" data-name="Line 3" x2="17.227" y2="17.227" transform="translate(44.791 43.846)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
+  </g>
+</svg>
