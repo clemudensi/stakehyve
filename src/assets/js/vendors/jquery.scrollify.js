@@ -25,16 +25,14 @@
  * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-
-
 if touchScroll is false - update index
 
  */
 (function (global,factory) {
-  "use strict";
+  'use strict';
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['jquery'], function($) {
+    define([ 'jquery' ], function($) {
       return factory($, global, global.document);
     });
   } else if (typeof module === 'object' && module.exports) {
@@ -45,7 +43,7 @@ if touchScroll is false - update index
     factory(jQuery, global, global.document);
   }
 }(typeof window !== 'undefined' ? window : this, function ($, window, document, undefined) {
-  "use strict";
+  'use strict';
   var heights = [],
     names = [],
     elements = [],
@@ -74,14 +72,14 @@ if touchScroll is false - update index
     wheelEvent = 'onwheel' in document ? 'wheel' : document.onmousewheel !== undefined ? 'mousewheel' : 'DOMMouseScroll',
     settings = {
       //section should be an identifier that is the same for each section
-      section: ".section",
-      sectionName: "section-name",
-      interstitialSection: "",
-      easing: "easeOutExpo",
+      section: '.section',
+      sectionName: 'section-name',
+      interstitialSection: '',
+      easing: 'easeOutExpo',
       scrollSpeed: 1100,
       offset: 0,
       scrollbars: true,
-      target:"html,body",
+      target:'html,body',
       standardScrollElements: false,
       setHeights: true,
       overflowScroll:true,
@@ -102,7 +100,7 @@ if touchScroll is false - update index
     if(disabled===true) {
       return true;
     }
-    if(names[index]) {
+    if(names[ index ]) {
       scrollable = false;
       if(firstLoad===true) {
         settings.afterRender();
@@ -114,31 +112,30 @@ if touchScroll is false - update index
         }
       }
       interstitialIndex = 1;
-      destination = heights[index];
+      destination = heights[ index ];
       if(firstLoad===false && currentIndex>index && toTop===false) {
         //We're going backwards
-        if(overflow[index]) {
+        if(overflow[ index ]) {
           portHeight = getportHeight();
 
-          interstitialIndex = parseInt(elements[index].outerHeight()/portHeight);
+          interstitialIndex = parseInt(elements[ index ].outerHeight()/portHeight);
 
-          destination = parseInt(heights[index])+(elements[index].outerHeight()-portHeight);
+          destination = parseInt(heights[ index ])+(elements[ index ].outerHeight()-portHeight);
         }
       }
-
 
       if(settings.updateHash && settings.sectionName && !(firstLoad===true && index===0)) {
         if(history.pushState) {
             try {
-              history.replaceState(null, null, names[index]);
+              history.replaceState(null, null, names[ index ]);
             } catch (e) {
               if(window.console) {
-                console.warn("Scrollify warning: Page must be hosted to manipulate the hash value.");
+                console.warn('Scrollify warning: Page must be hosted to manipulate the hash value.');
               }
             }
 
         } else {
-          window.location.hash = names[index];
+          window.location.hash = names[ index ];
         }
       }
 
@@ -166,7 +163,7 @@ if touchScroll is false - update index
         if(window.location.hash.length && settings.sectionName && window.console) {
           try {
             if($(window.location.hash).length) {
-              console.warn("Scrollify warning: ID matches hash value - this will cause the page to anchor.");
+              console.warn('Scrollify warning: ID matches hash value - this will cause the page to anchor.');
             }
           } catch (e) {}
         }
@@ -189,7 +186,7 @@ if touchScroll is false - update index
       var lastElements = samples.slice(Math.max(samples.length - num, 1));
 
       for(var i = 0; i < lastElements.length; i++){
-          sum += lastElements[i];
+          sum += lastElements[ i ];
       }
 
       return Math.ceil(sum/num);
@@ -206,7 +203,7 @@ if touchScroll is false - update index
   }
   var scrollify = function(options) {
     initialised = true;
-    $.easing['easeOutExpo'] = function(x, t, b, c, d) {
+    $.easing[ 'easeOutExpo' ] = function(x, t, b, c, d) {
       return (t==d) ? b+c : c * (-Math.pow(2, -10 * t/d) + 1) + b;
     };
 
@@ -251,10 +248,10 @@ if touchScroll is false - update index
         var i =1,
           max = heights.length,
           closest = 0,
-          prev = Math.abs(heights[0] - top),
+          prev = Math.abs(heights[ 0 ] - top),
           diff;
         for(;i<max;i++) {
-          diff = Math.abs(heights[i] - top);
+          diff = Math.abs(heights[ i ] - top);
 
           if(diff < prev) {
             prev = diff;
@@ -275,11 +272,10 @@ if touchScroll is false - update index
             return true;
           }
         }
-        if(!overflow[index]) {
+        if(!overflow[ index ]) {
           e.preventDefault();
         }
         var currentScrollTime = new Date().getTime();
-
 
         e = e || window.event;
         var value = e.originalEvent.wheelDelta || -e.originalEvent.deltaY || -e.originalEvent.detail;
@@ -297,7 +293,6 @@ if touchScroll is false - update index
           scrollSamples = [];
         }
         scrollTime = currentScrollTime;
-
 
         if(locked) {
           return false;
@@ -370,7 +365,7 @@ if touchScroll is false - update index
           $window.on('mouseup', manualScroll.handleMouseup);
           $window.on('scroll', manualScroll.handleScroll);
         } else {
-          $("body").css({"overflow":"hidden"});
+          $('body').css({ 'overflow':'hidden' });
         }
         $window.on(wheelEvent,manualScroll.wheelHandler);
         //$(document).bind(wheelEvent,manualScroll.wheelHandler);
@@ -380,15 +375,15 @@ if touchScroll is false - update index
 
     swipeScroll = {
       touches : {
-        "touchstart": {"y":-1,"x":-1},
-        "touchmove" : {"y":-1,"x":-1},
-        "touchend"  : false,
-        "direction" : "undetermined"
+        'touchstart': { 'y':-1,'x':-1 },
+        'touchmove' : { 'y':-1,'x':-1 },
+        'touchend'  : false,
+        'direction' : 'undetermined'
       },
       options:{
-        "distance" : 30,
-        "timeGap" : 800,
-        "timeStamp" : new Date().getTime()
+        'distance' : 30,
+        'timeGap' : 800,
+        'timeStamp' : new Date().getTime()
       },
       touchHandler: function(event) {
         if(disabled===true) {
@@ -401,7 +396,7 @@ if touchScroll is false - update index
         var touch;
         if (typeof event !== 'undefined'){
           if (typeof event.touches !== 'undefined') {
-            touch = event.touches[0];
+            touch = event.touches[ 0 ];
             switch (event.type) {
               case 'touchstart':
                 swipeScroll.touches.touchstart.y = touch.pageY;
@@ -419,7 +414,7 @@ if touchScroll is false - update index
                   //if(!overflow[index]) {
                     event.preventDefault();
                   //}
-                  swipeScroll.touches.direction = "y";
+                  swipeScroll.touches.direction = 'y';
                   if((swipeScroll.options.timeStamp+swipeScroll.options.timeGap)<(new Date().getTime()) && swipeScroll.touches.touchend == false) {
 
                     swipeScroll.touches.touchend = true;
@@ -440,9 +435,9 @@ if touchScroll is false - update index
                 }
                 break;
               case 'touchend':
-                if(swipeScroll.touches[event.type]===false) {
-                  swipeScroll.touches[event.type] = true;
-                  if (swipeScroll.touches.touchstart.y > -1 && swipeScroll.touches.touchmove.y > -1 && swipeScroll.touches.direction==="y") {
+                if(swipeScroll.touches[ event.type ]===false) {
+                  swipeScroll.touches[ event.type ] = true;
+                  if (swipeScroll.touches.touchstart.y > -1 && swipeScroll.touches.touchmove.y > -1 && swipeScroll.touches.direction==='y') {
 
                     if(Math.abs(swipeScroll.touches.touchmove.y-swipeScroll.touches.touchstart.y)>swipeScroll.options.distance) {
                       if(swipeScroll.touches.touchstart.y < swipeScroll.touches.touchmove.y) {
@@ -455,7 +450,7 @@ if touchScroll is false - update index
                     }
                     swipeScroll.touches.touchstart.y = -1;
                     swipeScroll.touches.touchstart.x = -1;
-                    swipeScroll.touches.direction = "undetermined";
+                    swipeScroll.touches.direction = 'undetermined';
                   }
                 }
               default:
@@ -475,13 +470,13 @@ if touchScroll is false - update index
             animateScroll(index,false,true,false);
           } else {
             portHeight = getportHeight();
-            if(Math.floor(elements[index].height()/portHeight)>interstitialIndex) {
+            if(Math.floor(elements[ index ].height()/portHeight)>interstitialIndex) {
 
-              interstitialScroll(parseInt(heights[index])+(portHeight*interstitialIndex));
+              interstitialScroll(parseInt(heights[ index ])+(portHeight*interstitialIndex));
               interstitialIndex += 1;
 
             } else {
-              interstitialScroll(parseInt(heights[index])+(elements[index].outerHeight()-portHeight));
+              interstitialScroll(parseInt(heights[ index ])+(elements[ index ].outerHeight()-portHeight));
             }
 
           }
@@ -500,12 +495,12 @@ if touchScroll is false - update index
               portHeight = getportHeight();
 
               interstitialIndex -= 1;
-              interstitialScroll(parseInt(heights[index])+(portHeight*interstitialIndex));
+              interstitialScroll(parseInt(heights[ index ])+(portHeight*interstitialIndex));
 
             } else {
 
               interstitialIndex = 1;
-              interstitialScroll(parseInt(heights[index]));
+              interstitialScroll(parseInt(heights[ index ]));
             }
           }
 
@@ -522,7 +517,6 @@ if touchScroll is false - update index
         }
       }
     };
-
 
     util = {
       refresh:function(withCallback,scroll) {
@@ -571,9 +565,9 @@ if touchScroll is false - update index
       manualScroll.init();
       swipeScroll.init();
 
-      $window.on("resize",util.handleResize);
+      $window.on('resize',util.handleResize);
       if (document.addEventListener) {
-        window.addEventListener("orientationchange", util.handleOrientation, false);
+        window.addEventListener('orientationchange', util.handleOrientation, false);
       }
     }
     function interstitialScroll(pos) {
@@ -599,7 +593,7 @@ if touchScroll is false - update index
       var selector = settings.section;
       overflow = [];
       if(settings.interstitialSection.length) {
-        selector += "," + settings.interstitialSection;
+        selector += ',' + settings.interstitialSection;
       }
       if(settings.scrollbars===false) {
         settings.overflowScroll = false;
@@ -610,20 +604,20 @@ if touchScroll is false - update index
 
         if(settings.setHeights) {
           if($this.is(settings.interstitialSection)) {
-            overflow[i] = false;
+            overflow[ i ] = false;
           } else {
-            if(($this.css("height","auto").outerHeight()<portHeight) || $this.css("overflow")==="hidden") {
-              $this.css({"height":portHeight});
+            if(($this.css('height','auto').outerHeight()<portHeight) || $this.css('overflow')==='hidden') {
+              $this.css({ 'height':portHeight });
 
-              overflow[i] = false;
+              overflow[ i ] = false;
             } else {
 
-              $this.css({"height":$this.outerHeight()});
+              $this.css({ 'height':$this.outerHeight() });
 
               if(settings.overflowScroll) {
-                overflow[i] = true;
+                overflow[ i ] = true;
               } else {
-                overflow[i] = false;
+                overflow[ i ] = false;
               }
             }
 
@@ -632,9 +626,9 @@ if touchScroll is false - update index
         } else {
 
           if(($this.outerHeight()<portHeight) || (settings.overflowScroll===false)) {
-            overflow[i] = false;
+            overflow[ i ] = false;
           } else {
-            overflow[i] = true;
+            overflow[ i ] = true;
           }
         }
       });
@@ -645,7 +639,7 @@ if touchScroll is false - update index
     function calculatePositions(scroll,firstLoad) {
       var selector = settings.section;
       if(settings.interstitialSection.length) {
-        selector += "," + settings.interstitialSection;
+        selector += ',' + settings.interstitialSection;
       }
       heights = [];
       names = [];
@@ -653,30 +647,30 @@ if touchScroll is false - update index
       $(selector).each(function(i){
           var $this = $(this);
           if(i>0) {
-            heights[i] = parseInt($this.offset().top) + settings.offset;
+            heights[ i ] = parseInt($this.offset().top) + settings.offset;
           } else {
-            heights[i] = parseInt($this.offset().top);
+            heights[ i ] = parseInt($this.offset().top);
           }
           if(settings.sectionName && $this.data(settings.sectionName)) {
-            names[i] = "#" + $this.data(settings.sectionName).toString().replace(/ /g,"-");
+            names[ i ] = '#' + $this.data(settings.sectionName).toString().replace(/ /g,'-');
           } else {
             if($this.is(settings.interstitialSection)===false) {
-              names[i] = "#" + (i + 1);
+              names[ i ] = '#' + (i + 1);
             } else {
-              names[i] = "#";
+              names[ i ] = '#';
               if(i===$(selector).length-1 && i>1) {
-                heights[i] = heights[i-1] + (parseInt($($(selector)[i-1]).outerHeight()) - parseInt($(window).height())) + parseInt($this.outerHeight());
+                heights[ i ] = heights[ i-1 ] + (parseInt($($(selector)[ i-1 ]).outerHeight()) - parseInt($(window).height())) + parseInt($this.outerHeight());
               }
             }
           }
-          elements[i] = $this;
+          elements[ i ] = $this;
           try {
-            if($(names[i]).length && window.console) {
+            if($(names[ i ]).length && window.console) {
               console.warn("Scrollify warning: Section names can't match IDs - this will cause the browser to anchor.");
             }
           } catch (e) {}
 
-          if(window.location.hash===names[i]) {
+          if(window.location.hash===names[ i ]) {
             index = i;
             hasLocation = true;
           }
@@ -690,24 +684,24 @@ if touchScroll is false - update index
     }
 
     function atTop() {
-      if(!overflow[index]) {
+      if(!overflow[ index ]) {
         return true;
       }
       top = $window.scrollTop();
-      if(top>parseInt(heights[index])) {
+      if(top>parseInt(heights[ index ])) {
         return false;
       } else {
         return true;
       }
     }
     function atBottom() {
-      if(!overflow[index]) {
+      if(!overflow[ index ]) {
         return true;
       }
       top = $window.scrollTop();
       portHeight = getportHeight();
 
-      if(top<parseInt(heights[index])+(elements[index].outerHeight()-portHeight)-28) {
+      if(top<parseInt(heights[ index ])+(elements[ index ].outerHeight()-portHeight)-28) {
 
         return false;
 
@@ -721,7 +715,7 @@ if touchScroll is false - update index
     var z = names.length;
     for(;z>=0;z--) {
       if(typeof panel === 'string') {
-        if (names[z]===panel) {
+        if (names[ z ]===panel) {
           index = z;
           //index, instant, callbacks, toTop
           animateScroll(z,instant,true,true);
@@ -740,7 +734,7 @@ if touchScroll is false - update index
       return false;
     }
     if(panel.originalEvent) {
-      panel = $(this).attr("href");
+      panel = $(this).attr('href');
     }
     move(panel,false);
   };
@@ -784,10 +778,10 @@ if touchScroll is false - update index
     }
     if(settings.setHeights) {
       $(settings.section).each(function() {
-        $(this).css("height","auto");
+        $(this).css('height','auto');
       });
     }
-    $window.off("resize",util.handleResize);
+    $window.off('resize',util.handleResize);
     if(settings.scrollbars) {
       $window.off('mousedown', manualScroll.handleMousedown);
       $window.off('mouseup', manualScroll.handleMouseup);
@@ -813,7 +807,7 @@ if touchScroll is false - update index
     util.handleUpdate();
   };
   scrollify.current = function() {
-    return elements[index];
+    return elements[ index ];
   };
   scrollify.currentIndex = function() {
     return index;
@@ -835,11 +829,11 @@ if touchScroll is false - update index
     if(!initialised) {
       return false;
     }
-    if(typeof updatedOptions === "object") {
+    if(typeof updatedOptions === 'object') {
       settings = $.extend(settings, updatedOptions);
       util.handleUpdate();
     } else if(window.console) {
-      console.warn("Scrollify warning: setOptions expects an object.");
+      console.warn('Scrollify warning: setOptions expects an object.');
     }
   };
   $.scrollify = scrollify;

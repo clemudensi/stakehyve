@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 export default () => {
-  const [theme, setTheme] = useState('light')
+  const [ theme, setTheme ] = useState('light')
 
   const toggleTheme = () => {
     if (theme === 'dark') {

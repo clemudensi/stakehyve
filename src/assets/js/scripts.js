@@ -2,12 +2,12 @@
  * ICOCrypto v1.6.0 by Softnio.
 **/
 var NioApp = (function (jQ, win, doc){
-    "use strict";
-    var NioApp = {AppInfo: {name: "ICOCrypto", package: "1.6.0", version: "1.0.2", author: "Softnio"} },
-        components = {docReady: [], docReadyDefer: [], winLoad: [], winLoadDefer: []};
+    'use strict';
+    var NioApp = { AppInfo: { name: 'ICOCrypto', package: '1.6.0', version: '1.0.2', author: 'Softnio' } },
+        components = { docReady: [], docReadyDefer: [], winLoad: [], winLoadDefer: [] };
 
     jQ(doc).ready(docReady);
-    jQ(win).on("load", winLoad);
+    jQ(win).on('load', winLoad);
 
     function docReady(stmt){
         stmt = (typeof stmt === typeof undefined) ? jQ : stmt;
@@ -15,7 +15,7 @@ var NioApp = (function (jQ, win, doc){
     }
 
     function winLoad(stmt){
-        stmt = (typeof stmt === "object") ? jQ : stmt;
+        stmt = (typeof stmt === 'object') ? jQ : stmt;
         components.winLoad.concat(components.winLoadDefer).forEach(function(component){ component(stmt); });
     }
 	
@@ -27,7 +27,7 @@ var NioApp = (function (jQ, win, doc){
 }(jQuery, window, document));
 
 NioApp = function (NioApp, $, window, document) {
-    "use strict";
+    'use strict';
 	// Defined Variables
     var $win		= $(window), 
 		$doc		= $(document),
@@ -41,7 +41,7 @@ NioApp = function (NioApp, $, window, document) {
 		_is_shrink	= 'is-shrink',
         _currentURL	= window.location.href,
         _headerHT	= ($header.innerHeight() - 2),
-        _splitURL	= _currentURL.split("#");
+        _splitURL	= _currentURL.split('#');
         
 	// is exists @v1.0
 	$.fn.exists = function () {
@@ -56,7 +56,7 @@ NioApp = function (NioApp, $, window, document) {
 	// getStatus @v1.0
 	NioApp.getStatus = {};
 	NioApp.getStatus.isRTL = ($body.hasClass('has-rtl') || $body.attr('dir') === 'rtl') ? true : false;
-	NioApp.getStatus.isTouch = (("ontouchstart" in document.documentElement)) ? true : false;
+	NioApp.getStatus.isTouch = (('ontouchstart' in document.documentElement)) ? true : false;
 	NioApp.getStatus.isMobile = (navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Windows Phone|/i)) ? true : false;
 	NioApp.getStatus.asMobile = (NioApp.Win.width < _mobBreak) ? true : false;
 	
@@ -74,9 +74,9 @@ NioApp = function (NioApp, $, window, document) {
 	NioApp.Util.classInit = function() {
 		var hastouch = function () {
 				if (NioApp.getStatus.isTouch===true) { 
-					$body.addClass("has-touch"); 
+					$body.addClass('has-touch'); 
 				} else { 
-					$body.addClass("no-touch"); 
+					$body.addClass('no-touch'); 
 				}
 			},
 			mobileview = function () {
@@ -103,7 +103,7 @@ NioApp = function (NioApp, $, window, document) {
 			$spinner 	= $('.spinner');
 		
 		if ($preloader.exists()) {
-            $body.addClass("page-loaded");
+            $body.addClass('page-loaded');
             $spinner.fadeOut(300);
             $preloader.delay(600).fadeOut(300);
         }
@@ -117,12 +117,12 @@ NioApp = function (NioApp, $, window, document) {
         if ($backtop.exists()) {
               var scrollOffsetFromTop = 800;
               if ($win.scrollTop() > scrollOffsetFromTop) {
-                  $backtop.fadeIn("slow");
+                  $backtop.fadeIn('slow');
               } else {
-                  $backtop.fadeOut("slow");
+                  $backtop.fadeOut('slow');
               }
 
-              $backtop.on("click", function (e) {
+              $backtop.on('click', function (e) {
                   $('body,html').stop().animate({
                       scrollTop: 0
                   }, 1500, 'easeInOutExpo');
@@ -134,12 +134,12 @@ NioApp = function (NioApp, $, window, document) {
     
     // Browser Check !Util @v1.0
     NioApp.Util.browser = function() {
-        var isChrome = (navigator.userAgent.indexOf("Chrome") !== -1) ? 1 : 0, 
-        isFirefox = (navigator.userAgent.indexOf("Firefox") !== -1) ? 1 : 0,
-        isSafari = (navigator.userAgent.indexOf("Safari") !== -1) ? true : false,
-        isIE = ((navigator.userAgent.indexOf("MSIE") !== -1 ) || (!!document.documentMode)) ? 1 : 0,
+        var isChrome = (navigator.userAgent.indexOf('Chrome') !== -1) ? 1 : 0, 
+        isFirefox = (navigator.userAgent.indexOf('Firefox') !== -1) ? 1 : 0,
+        isSafari = (navigator.userAgent.indexOf('Safari') !== -1) ? true : false,
+        isIE = ((navigator.userAgent.indexOf('MSIE') !== -1 ) || (!!document.documentMode)) ? 1 : 0,
         isEdge = !isIE && !!window.StyleMedia, 
-        isOpera = (navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) ? 1 : 0;
+        isOpera = (navigator.userAgent.indexOf('Opera') || navigator.userAgent.indexOf('OPR')) ? 1 : 0;
         
         if(isChrome) {
             $body.addClass('chrome');
@@ -196,7 +196,7 @@ NioApp = function (NioApp, $, window, document) {
 	
 	// imageBG !Util @v1.0
 	NioApp.Util.imageBG = function () {
-		var $imagebg = $(".bg-image");
+		var $imagebg = $('.bg-image');
 		
 		if($imagebg.exists()) {
 			$imagebg.each(function(){
@@ -222,7 +222,7 @@ NioApp = function (NioApp, $, window, document) {
 					if ( opacity_value ) {
 						$this.addClass('overlay-opacity-'+opacity_value);
 					}
-					$this.css("background-image", 'url("'+ image +'")').addClass('bg-image-loaded');
+					$this.css('background-image', 'url("'+ image +'")').addClass('bg-image-loaded');
 				}
 			});
 		}
@@ -352,9 +352,9 @@ NioApp = function (NioApp, $, window, document) {
 		
         if($().waypoint && $animated.exists()){
 			$animated.each(function(){
-				var aniWay = $(this), typ = aniWay.data("animate"), dur = aniWay.data("duration"), dly = aniWay.data("delay");
+				var aniWay = $(this), typ = aniWay.data('animate'), dur = aniWay.data('duration'), dly = aniWay.data('delay');
 				aniWay.waypoint(function(){
-					aniWay.addClass("animated "+typ).css("visibility", "visible");
+					aniWay.addClass('animated '+typ).css('visibility', 'visible');
 					if(dur){ 
 						aniWay.css('animation-duration', dur+'s'); 
 					}
@@ -420,7 +420,7 @@ NioApp = function (NioApp, $, window, document) {
 		// menuToggle @v1.0
 		MenuInit.menuToggle = function () {
 			if ($menu_toggle.exists()) {
-				$menu_toggle.on("click",function(e){
+				$menu_toggle.on('click',function(e){
 					var $parent = $(this).parent();
 					if ($win.width() < _navBreak) {
 						$parent.children(_menu_drop).slideToggle(400);
@@ -445,8 +445,8 @@ NioApp = function (NioApp, $, window, document) {
 		MenuInit.currentPage = function() {
 			if ($menu_link.exists()) {
 				$menu_link.each(function() {
-					if (_currentURL === (this.href) && (_splitURL[1]!=="")) {
-						$(this).closest("li").addClass("active").parent().closest("li").addClass("active");
+					if (_currentURL === (this.href) && (_splitURL[ 1 ]!=='')) {
+						$(this).closest('li').addClass('active').parent().closest('li').addClass('active');
 					}
 				});
 			}
@@ -460,11 +460,10 @@ NioApp = function (NioApp, $, window, document) {
 	};
 	NioApp.components.docReady.push(NioApp.MainMenu);
 	
-	
     // OnePageScroll @v1.0
     NioApp.OnePageScroll = function() {
         var _scroll_tigger = '.menu-link';
-        $('a'+ _scroll_tigger +'[href*="#"]:not([href="#"])').on("click", function() {
+        $('a'+ _scroll_tigger +'[href*="#"]:not([href="#"])').on('click', function() {
             if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
                 var toHash = this.hash, toHashN = (this.hash.slice(1)) ? $('[name=' + this.hash.slice(1) + ']') : false;
                 var $toHash = toHash.length ? $(toHash) : toHashN;
@@ -473,7 +472,7 @@ NioApp = function (NioApp, $, window, document) {
                     $('.header-navbar').removeClass('menu-shown');
                     $('html, body').delay(150).animate({
                         scrollTop: ($toHash.offset().top - _headerHT)
-                    }, 1000, "easeInOutExpo"); 
+                    }, 1000, 'easeInOutExpo'); 
                     return false;
                 }
             }
@@ -499,7 +498,7 @@ NioApp = function (NioApp, $, window, document) {
 		var $count = $('.countdown');
         if ($count.exists()) {
             $count.each(function() {
-                var $self = $(this), datetime = $self.attr("data-date");
+                var $self = $(this), datetime = $self.attr('data-date');
                 var _day_text = ($self.data('day-text')) ? $self.data('day-text') : 'Days';
                 var _hour_text = ($self.data('hour-text')) ? $self.data('hour-text') : 'Hours';
                 var _min_text = ($self.data('min-text')) ? $self.data('min-text') : 'Min';
@@ -533,7 +532,7 @@ NioApp = function (NioApp, $, window, document) {
                 if(cim <= 1){ cim = cim_t_l = cim_t_p = cim_m = 1;}
                 
                 $self.addClass('owl-carousel').owlCarousel({
-                    navText: ["<em class='ti ti-angle-left'></em>","<em class='ti ti-angle-right'></em>"],
+                    navText: [ "<em class='ti ti-angle-left'></em>","<em class='ti ti-angle-right'></em>" ],
                     items: cim, 
                     loop: c_loop, 
                     nav: c_navs, 
@@ -567,7 +566,7 @@ NioApp = function (NioApp, $, window, document) {
         function fixing_blank (_this) {
             var _self = $(_this);
             if(!_self.hasClass('blank-added') && $win.width() > 575) {
-                _self.trigger('add.owl.carousel', ['<div class="item-blank"></div>']);
+                _self.trigger('add.owl.carousel', [ '<div class="item-blank"></div>' ]);
                 _self.addClass('blank-added').removeClass('blank-removed');
                 _self.trigger('refresh.owl.carousel');
             } else if (!_self.hasClass('blank-removed') && $win.width() < 576 && _self.hasClass('blank-added') ) {
@@ -581,13 +580,13 @@ NioApp = function (NioApp, $, window, document) {
 	
 	// Select2 !Plugin @v1.0
 	NioApp.Plugins.select2 = function () {
-		var $select = $(".select");
+		var $select = $('.select');
 		if ($select.exists()) {
 			$select.each(function(){
 				var $self = $(this),
                     _theme = ($self.data('select2-theme')) ? $self.data('select2-theme') : 'bordered',
                     _place = ($self.data('select2-placehold')) ? $self.data('select2-placehold') : 'Select an option';
-				$self.select2({ placeholder: _place, theme: "default select-" + _theme });
+				$self.select2({ placeholder: _place, theme: 'default select-' + _theme });
 			});
         }
 	};
@@ -595,7 +594,7 @@ NioApp = function (NioApp, $, window, document) {
     
     // Validator !Plugin @v1.0
 	NioApp.Plugins.validform = function () {
-		var $form = $(".form-validate");
+		var $form = $('.form-validate');
         if( !$().validate ) {
             console.log('jQuery Form Validate not Defined.');
             return true;
@@ -645,7 +644,7 @@ NioApp = function (NioApp, $, window, document) {
     
 	// Parallax !Plugin @v1.0
 	NioApp.Plugins.parallax = function () {
-		var $parallax = $("[data-parallax]");
+		var $parallax = $('[data-parallax]');
 		
 		if ($parallax.exists()) {
 			$parallax.each(function(){
@@ -722,110 +721,110 @@ NioApp = function (NioApp, $, window, document) {
                     _shape_stroke_color= ($self.data('shape-stroke-color')) ? $self.data('shape-stroke-color') : '#fff', 
                     _line_linked_color = ($self.data('line-linked-color')) ? $self.data('line-linked-color') : '#fff';
                 particlesJS($self_id, {
-                "particles": {
-                    "number": {
-                        "value": 40,
-                        "density": {
-                            "enable": true,
-                            "value_area": 800
+                'particles': {
+                    'number': {
+                        'value': 40,
+                        'density': {
+                            'enable': true,
+                            'value_area': 800
                         }
                     },
-                    "color": {
-                        "value": _default_color,
+                    'color': {
+                        'value': _default_color,
                     },
-                    "shape": {
-                        "type": "circle",
-                        "opacity": 0.10,
-                        "stroke": {
-                            "width": 0,
-                            "color": _shape_stroke_color,
+                    'shape': {
+                        'type': 'circle',
+                        'opacity': 0.10,
+                        'stroke': {
+                            'width': 0,
+                            'color': _shape_stroke_color,
                         },
-                        "polygon": {
-                            "nb_sides": 5
+                        'polygon': {
+                            'nb_sides': 5
                         }
                     },
-                    "opacity": {
-                        "value": 0.10,
-                        "random": false,
-                        "anim": {
-                            "enable": false,
-                            "speed": 1,
-                            "opacity_min": 0.12,
-                            "sync": false
+                    'opacity': {
+                        'value': 0.10,
+                        'random': false,
+                        'anim': {
+                            'enable': false,
+                            'speed': 1,
+                            'opacity_min': 0.12,
+                            'sync': false
                         }
                     },
-                    "size": {
-                        "value": 6,
-                        "random": true,
-                        "anim": {
-                            "enable": false,
-                            "speed": 40,
-                            "size_min": 0.08,
-                            "sync": false
+                    'size': {
+                        'value': 6,
+                        'random': true,
+                        'anim': {
+                            'enable': false,
+                            'speed': 40,
+                            'size_min': 0.08,
+                            'sync': false
                         }
                     },
-                    "line_linked": {
-                        "enable": true,
-                        "distance": 150,
-                        "color": _line_linked_color,
-                        "opacity": 0.2,
-                        "width": 1.3
+                    'line_linked': {
+                        'enable': true,
+                        'distance': 150,
+                        'color': _line_linked_color,
+                        'opacity': 0.2,
+                        'width': 1.3
                     },
-                    "move": {
-                        "enable": true,
-                        "speed": 6,
-                        "direction": "none",
-                        "random": false,
-                        "straight": false,
-                        "out_mode": "out",
-                        "bounce": false,
-                        "attract": {
-                            "enable": false,
-                            "rotateX": 600,
-                            "rotateY": 1200
+                    'move': {
+                        'enable': true,
+                        'speed': 6,
+                        'direction': 'none',
+                        'random': false,
+                        'straight': false,
+                        'out_mode': 'out',
+                        'bounce': false,
+                        'attract': {
+                            'enable': false,
+                            'rotateX': 600,
+                            'rotateY': 1200
                         }
                     }
                 },
-                "interactivity": {
-                    "detect_on": "canvas",
-                    "events": {
-                        "onhover": {
-                            "enable": true, 
-                            "mode": "repulse"
+                'interactivity': {
+                    'detect_on': 'canvas',
+                    'events': {
+                        'onhover': {
+                            'enable': true, 
+                            'mode': 'repulse'
                         },
-                        "onclick": {
-                            "enable": true, 
-                            "mode": "push"
+                        'onclick': {
+                            'enable': true, 
+                            'mode': 'push'
                         },
-                        "resize": true
+                        'resize': true
                     },
-                    "modes": {
-                        "grab": {
-                        "distance": 400,
-                            "line_linked": {
-                                "opacity": 1
+                    'modes': {
+                        'grab': {
+                        'distance': 400,
+                            'line_linked': {
+                                'opacity': 1
                             }
                         },
-                        "bubble": {
-                            "distance": 400,
-                            "size": 40,
-                            "duration": 2,
-                            "opacity": 8,
-                            "speed": 3
+                        'bubble': {
+                            'distance': 400,
+                            'size': 40,
+                            'duration': 2,
+                            'opacity': 8,
+                            'speed': 3
                         },
-                        "repulse": {
-                            "distance": 200,
-                            "duration": 0.4
+                        'repulse': {
+                            'distance': 200,
+                            'duration': 0.4
                         },
-                        "push": {
-                            "particles_nb": 4
+                        'push': {
+                            'particles_nb': 4
                         },
-                        "remove": {
-                            "particles_nb": 2
+                        'remove': {
+                            'particles_nb': 2
                         }
                     }
                 },
-                    "retina_detect": true
+                    'retina_detect': true
                 }
                 // Stop here.
               );
@@ -839,8 +838,8 @@ NioApp = function (NioApp, $, window, document) {
         var $fullscreen = $('.mode-fullscreen');
         if ($fullscreen.exists()) {
             $.scrollify({
-                section : ".section-full",
-                interstitialSection : "",
+                section : '.section-full',
+                interstitialSection : '',
                 scrollSpeed: 1100,
                 scrollbars: true,
                 updateHash: false,
@@ -871,7 +870,6 @@ NioApp = function (NioApp, $, window, document) {
         }
 	};
 	NioApp.components.docReady.push(NioApp.Plugins.scrollify);
-    
     
 	// activeAnimate !Util @v1.0 @since v1.6
     NioApp.Util.wordSplit = function () {
