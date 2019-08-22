@@ -21,50 +21,62 @@ export default class Firebase {
 
   }
 
+  doEmailVerify = async () => {
+   try {
+     const res = await this.auth.currentUser.sendEmailVerification()
+        console.log(res, 'res')
+       return {
+         msg: "email is sent",
+         res
+       }
+   } catch (error) {
+     console.log(error, 'error')
+       return {
+         msg: "email not sent",
+         error
+       }
+   }
+    //  .then((res) => {
+    //    console.log(res, 'res')
+    //   return {
+    //     msg: "email is sent",
+    //     res
+    //   }
+    // }).catch((error) => {
+    //    console.log(error, 'error')
+    //   return {
+    //     msg: "email not sent",
+    //     error
+    //   }
+    // })
+  };
+
+
   //API AUTHENTICATIONS FIREBASE
 
   doCreateUserWithEmailAndPassword = async (email, password, fname, lname) => {
     try{
-       await this.auth.createUserWithEmailAndPassword(email, password)
-       .then(cred => {
-        fb.db.collection('users').doc(cred.user.uid).set({
-            firstName: fname,
-            lastName: lname,
-            email,
-            uid: cred.user.uid,
-            initials: fname[ 0 ] + lname[ 0 ]
-          })
-       }).then( async() => {
-         await this.doEmailVerify()
-       })
-    }catch(e){
-     console.log(e)
+     await this.auth.createUserWithEmailAndPassword(email, password)
+     .then(cred => {
+      fb.db.collection('users').doc(cred.user.uid).set({
+        firstName: fname,
+        lastName: lname,
+        email,
+        uid: cred.user.uid,
+        initials: fname[ 0 ] + lname[ 0 ]
+        })
+     }).then( () => this.doEmailVerify())
+    }catch(err){
+     return err
     }
-  }
+  };
 
   doSignInWithEmailAndPassword = (email, password) => {
     return this.auth.signInWithEmailAndPassword(email, password);
   };
 
-  doEmailVerify = async () => {
-  //  const user = await this.getcurrentUser();
+  // doVerify = () => this.auth.currentUser.emailVerified
 
-  this.auth.sendEmailVerification().then(() => {
-    console.log("email is sent")
-  }).catch((error) => {
-    console.log("email not sent", error)
-  })
-  };
-
-  doEmailVerify = () => {
-    try{
-      const mail = this.auth.currentUser.sendEmailVerification()
-      console.log(window.location.origin)
-      return mail
-    }catch(e){
-      console.log(e)
-    }
-  }
 
   onAuthUserListener = (next, fallback) =>
   this.auth.onAuthStateChanged(async user => {
@@ -118,10 +130,10 @@ export default class Firebase {
     if (res.exists) {
       return res.data();
     }
-    return;
   };
 
   getUserDoc = uid => this.db.collection('users').doc(uid);
+
   getUsers = () => this.db.collection('users');
 
   getUserCourses = async uid =>

@@ -4,28 +4,44 @@ import { fb } from '../../utils/firebase';
 
 
 const LoginForm = ({ history }) => {
+
+  const [inputs, setInputs] = useState({});
+  const [error, setError] = useState('');
+  const handleChange = (event) => {
+    event.persist();
+    setInputs(inputs => ({...inputs, [event.target.name]: event.target.value}));
+  };
  
-  const [ value, setValue ] = useState('');
-  const [ email ] = useState('');
-  const [ password1 ] = useState('');
-  const handleChange = e => setValue(e.target.value);
+  const { email, password } = inputs;
+
   const handleSubmit = e => {
     e.preventDefault();
     fb.doSignInWithEmailAndPassword(
       email,
-      password1,
-    ).then(() => {
-      history.push('/');
+      password)
+      .then(() => {
+      history.push('/')
     })
       .catch((error) =>{
-        console.log(error)
+        switch (error.code) {
+          case 'auth/wrong-password':
+            setError('Wrong Password');
+            break;
+          case 'auth/user-not-found':
+            setError('User with email address not Found');
+            break;
+          default:
+            setError('')
+        }
       });
   };
+
   return (
     <Login
       handleSubmit={handleSubmit}
-      value={ value }
-      setValue={setValue}
+      email={inputs.email}
+      password={inputs.password}
+      error={error}
       handleChange={handleChange}
     />
   );

@@ -7,27 +7,46 @@ const SignUpForm = ({ history }) => {
   const [ fname, setFname ] = useState('');
   const [ lname, setLname ] = useState('');
   const [ email, setEmail ] = useState('');
-  const [ password1, setpassword1 ] = useState('');
+  const [ password1, setPassword ] = useState('');
+  // const [ result, response ] = useState('');
+  const [ error, setError ] = useState('');
+  const [ signUp, signUpSuccess ] = useState('');
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-     fb.doCreateUserWithEmailAndPassword(
-       email,
-      password1,
-      fname,
-      lname
-      ).then(() => {
+    try {
+      const res = await fb.doCreateUserWithEmailAndPassword(
+        email,
+        password1,
+        fname,
+        lname
+      );
+      // console.log(res, 'res');
+      // response(res);
+      switch (res.code) {
+        case 'auth/email-already-in-use':
+          setError(res.message);
+          break;
+        case '':
+          signUpSuccess('');
+          break;
+        default:
+          return res
+      }
+      if (res.code !== 'auth/email-already-in-use' || undefined){
         setFname('');
         setLname('');
         setEmail('');
-        setpassword1('');
-      })
-      .catch((error) =>{
-       console.log(error)
-     });
-
-     history.push('/verification');
+        setPassword('');
+        signUpSuccess('You have successfully created an account check your email to continue')
+      }
+    } catch (err) {
+      if(err.code){
+        setError(err.message)
+      }
+    }
   };
+  // console.log(result, 'Rez')
 
   const isInvalid =
   // password1 !== password2 ||
@@ -45,8 +64,10 @@ const SignUpForm = ({ history }) => {
         email={email}
         setEmail={setEmail}
         password1={password1}
-        setpassword1={setpassword1}
+        setPassword={setPassword}
         isInvalid={isInvalid}
+        success={signUp}
+        error={error}
         handleSubmit={handleSubmit}
       />
   );

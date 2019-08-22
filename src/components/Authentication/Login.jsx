@@ -2,9 +2,9 @@ import React from 'react';
 import './login.css';
 import EOSIcon from "../../assets/images/EOS.svg";
 
-const Login = ({ handleSubmit, value, handleChange}) =>{
-    return(
+const Login = ({ handleSubmit, email, password, error, handleChange}) =>{
 
+    return(
         <body className="nk-body body-wider bg-dark page-loaded chrome no-touch">
         <div className="nk-wrap">
         
@@ -17,15 +17,16 @@ const Login = ({ handleSubmit, value, handleChange}) =>{
                         <h5 className="ath-heading title">Welcome Back!
                         <small class="tc-default">signin to your Earnathon Account</small>
                         </h5>
-                        
+                        <p style={{ color: 'red'}}>{error}</p>
                         <form action="./">
                             <div className="field-item">
                                 <div className="field-wrap">
                                     <input
                                       type="text"
+                                      name="email"
                                       className="input-bordered"
                                       placeholder="Your Email"
-                                      value={ value }
+                                      value={ email }
                                       onChange={ handleChange }
                                     />
                                 </div>
@@ -34,9 +35,10 @@ const Login = ({ handleSubmit, value, handleChange}) =>{
                                 <div className="field-wrap">
                                     <input
                                       type="password"
+                                      name="password"
                                       className="input-bordered"
                                       placeholder="Password"
-                                      value={ value }
+                                      value={ password }
                                       onChange={ handleChange }
                                     />
                                 </div>
@@ -56,11 +58,9 @@ const Login = ({ handleSubmit, value, handleChange}) =>{
                             >Sign In</button>
                         </form>
                         
-    
-                        
                     </div>
                     <div className="ath-note text-center tc-light">
-                        Don’t have an account? <a href="page-register.html"> <strong>Sign up here</strong></a>
+                        Don’t have an account? <a href="/signup"> <strong>Sign up here</strong></a>
                     </div>
                 </div>
             </main>
