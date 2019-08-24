@@ -4,7 +4,8 @@ import {
   AsyncSignUp,
   AsyncAllAssets,
   AsyncEmailVerify,
-  AsyncForgot
+  AsyncForgot,
+  PassReset
 } from './auth';
 
 const authRoutes = [
@@ -13,6 +14,7 @@ const authRoutes = [
   { path: '/assets', name: 'Assets', render: props => <AsyncAllAssets {...props} /> },
   { path: '/verify', name: 'Verify', render: props => <AsyncEmailVerify {...props} /> },
   { path: '/forgot', name: 'Forgot', render: props => <AsyncForgot {...props} /> },
+  { path: '/reset', name: 'Reset', render: props => <PassReset {...props} /> },
 ];
 
 export default authRoutes;

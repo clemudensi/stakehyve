@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Login from '../Authentication/Login';
+import PassResetForm from '../Authentication/PassResetForm';
 import { fb } from '../../utils/firebase';
 
 
@@ -11,17 +11,17 @@ const LoginForm = ({ history }) => {
     event.persist();
     setInputs(inputs => ({...inputs, [event.target.name]: event.target.value}));
   };
- 
-  const { email, password } = inputs;
+
+  const { code, password } = inputs;
 
   const handleSubmit = e => {
     e.preventDefault();
-    fb.doSignInWithEmailAndPassword(
-      email,
+    fb.doResetPassword(
+      code,
       password)
       .then(() => {
-      history.push('/')
-    })
+        history.push('/')
+      })
       .catch((error) =>{
         switch (error.code) {
           case 'auth/wrong-password':
@@ -37,9 +37,9 @@ const LoginForm = ({ history }) => {
   };
 
   return (
-    <Login
+    <PassResetForm
       handleSubmit={handleSubmit}
-      email={email}
+      email={code}
       password={password}
       error={error}
       handleChange={handleChange}

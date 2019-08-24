@@ -22,7 +22,7 @@ const Login = ({ handleSubmit, email, password, error, handleChange}) =>{
                             <div className="field-item">
                                 <div className="field-wrap">
                                     <input
-                                      type="text"
+                                      type="email"
                                       name="email"
                                       className="input-bordered"
                                       placeholder="Your Email"
@@ -49,7 +49,7 @@ const Login = ({ handleSubmit, email, password, error, handleChange}) =>{
                                     <label htmlFor="remember-me-2">Remember Me</label>
                                 </div>
                                 <div className="forget-link fz-6">
-                                    <a href="page-reset.html">Forgot password?</a>
+                                    <a href="/forgot">Forgot password?</a>
                                 </div>
                             </div>
                             <button

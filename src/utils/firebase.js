@@ -75,31 +75,35 @@ export default class Firebase {
     return this.auth.signInWithEmailAndPassword(email, password);
   };
 
-  // doVerify = () => this.auth.currentUser.emailVerified
+  doResetEmail = (email) =>
+    this.auth.sendPasswordResetEmail(email);
+
+  doResetPassword = (code, password) =>
+    this.auth.confirmPasswordReset(`${code}`, `${password}`);
 
 
   onAuthUserListener = (next, fallback) =>
-  this.auth.onAuthStateChanged(async user => {
-    try {
-      if (this.auth.currentUser) {
-        const user = await this.getUser(this.auth.currentUser.uid);
-        if (user) {
-          if (next) {
-            console.log('next1');
-            return next(user);
+    this.auth.onAuthStateChanged(async user => {
+      try {
+        if (this.auth.currentUser) {
+          const user = await this.getUser(this.auth.currentUser.uid);
+          if (user) {
+            if (next) {
+              console.log('next1');
+              return next(user);
+            }
           }
         }
+      } catch (error) {
+        if (fallback) {
+          console.log('fallback1', error);
+          return fallback();
+        }
       }
-    } catch (error) {
       if (fallback) {
-        console.log('fallback1', error);
+        console.log('fallback2');
         return fallback();
       }
-    }
-    if (fallback) {
-      console.log('fallback2');
-      return fallback();
-    }
   });
 
   doPasswordReset = email => this.auth.sendPasswordResetEmail(email);

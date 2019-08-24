@@ -1,5 +1,6 @@
+import React from 'react';
 import FirebaseContext from '../utils/appContext';
-import Firebase from '../utils/firebase';
+import Firebase, { fb } from '../utils/firebase';
 
 export default Firebase;
 
