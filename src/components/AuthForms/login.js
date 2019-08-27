@@ -18,10 +18,10 @@ const LoginForm = ({ history }) => {
     fb.doSignInWithEmailAndPassword(
       email,
       password)
-      .then(() => {
+      .then((res) => {
         switch ((fb.getCurrentUser()).emailVerified) {
-          case true:
-            history.push('/dashboard');
+        case true:
+            window.location.replace('/dashboard');
             break;
           case false:
             setError('Email has not been verified');

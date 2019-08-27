@@ -24,7 +24,7 @@ export default class Firebase {
   doEmailVerify = async (email, history) => {
    try {
      await this.auth.currentUser.sendEmailVerification();
-     alert(`verification email has been sent. check ${email} to continue`)
+     alert(`verification email has been sent. check ${email} to continue`);
      history.push('/')
    }catch (error) {
      return {

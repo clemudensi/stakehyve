@@ -11,6 +11,7 @@ const ForgotPass = ({ history }) => {
   const handleChange = (event) => {
     event.persist();
     setInputs(inputs => ({...inputs, [event.target.name]: event.target.value}));
+    setResponse('')
   };
 
   const { email } = inputs;
@@ -23,11 +24,11 @@ const ForgotPass = ({ history }) => {
       .then(() => {
         localStorage.setItem('user', email);
         setResponse('Check your email to continue');
-        setInputs(inputs => ({...inputs, [e.target.name]: ''}))
+        setInputs({email: ''})
       })
       .catch((error) =>{
         return error.code ?
-          setError('User with email address not Found') :
+          setError(error.code) :
           null
       });
   };

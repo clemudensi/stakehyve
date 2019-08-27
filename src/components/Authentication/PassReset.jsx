@@ -36,7 +36,11 @@ const LoginForm = ({ history, location }) => {
         })
       })
       .catch((error) => {
-        setError(error.code)
+        if (error.code === 'auth/invalid-action-code') {
+          setError('Reset code has expired or have been used previously');
+        } else {
+          setError(error.code)
+        }
       });
   };
 
