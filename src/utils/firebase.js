@@ -21,20 +21,16 @@ export default class Firebase {
 
   }
 
-  doEmailVerify = async () => {
+  doEmailVerify = async (email, history) => {
    try {
-     const res = await this.auth.currentUser.sendEmailVerification()
-        console.log(res, 'res')
-       return {
-         msg: "email is sent",
-         res
-       }
-   } catch (error) {
-     console.log(error, 'error')
-       return {
-         msg: "email not sent",
-         error
-       }
+     await this.auth.currentUser.sendEmailVerification();
+     alert(`verification email has been sent. check ${email} to continue`)
+     history.push('/')
+   }catch (error) {
+     return {
+       msg: "email not sent",
+       error
+     }
    }
     //  .then((res) => {
     //    console.log(res, 'res')
@@ -54,7 +50,7 @@ export default class Firebase {
 
   //API AUTHENTICATIONS FIREBASE
 
-  doCreateUserWithEmailAndPassword = async (email, password, fname, lname) => {
+  doCreateUserWithEmailAndPassword = async (email, password, fname, lname, history) => {
     try{
      await this.auth.createUserWithEmailAndPassword(email, password)
      .then(cred => {
@@ -65,7 +61,7 @@ export default class Firebase {
         uid: cred.user.uid,
         initials: fname[ 0 ] + lname[ 0 ]
         })
-     }).then( () => this.doEmailVerify())
+     }).then( () => this.doEmailVerify(email, history))
     }catch(err){
      return err
     }
@@ -79,7 +75,7 @@ export default class Firebase {
     this.auth.sendPasswordResetEmail(email);
 
   doResetPassword = (code, password) =>
-    this.auth.confirmPasswordReset(`${code}`, `${password}`);
+    this.auth.confirmPasswordReset(code, password);
 
 
   onAuthUserListener = (next, fallback) =>
@@ -106,24 +102,21 @@ export default class Firebase {
       }
   });
 
-  doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
-
   doPasswordUpdate = password =>
     this.auth.currentUser.updatePassword(password);
 
   doSignOut = () => this.auth.signOut();
 
-  getcurrentUser = () => this.auth().currentUser;
+  getCurrentUser = () => this.auth.currentUser;
 
 //Users API
 
   getMe = async (uid, callback) => {
     const doc = this.getUserDoc(uid);
-    const unsubscribe = await doc.onSnapshot(doc => {
+    await doc.onSnapshot(doc => {
       const user = doc.data();
       callback({ user })
-    });
-    return unsubscribe
+    })
   };
 
   getUser = async uid => {

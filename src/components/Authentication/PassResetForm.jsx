@@ -1,8 +1,10 @@
 import React from 'react';
 import './login.css';
 import EOSIcon from "../../assets/images/EOS.svg";
+import { NavLink } from 'react-router-dom';
+import { fb } from '../../utils/firebase';
 
-const PassResetForm = ({ handleSubmit, code, password, error, handleChange}) =>{
+const PassResetForm = ({ handleSubmit, email, password, error, history, handleChange}) =>{
 
   return(
     <body className="nk-body body-wider bg-dark page-loaded chrome no-touch">
@@ -16,20 +18,17 @@ const PassResetForm = ({ handleSubmit, code, password, error, handleChange}) =>{
           <div className="ath-body">
             <h5 className="ath-heading title">Reset Password
             </h5>
-            <p style={{ color: 'red'}}>{error}</p>
+            {
+              error === 'Password reset successful, verify email to continue' ?
+                <p style={{ color: 'red'}}>{error} <br/>
+                  {
+                    <NavLink onClick={()=>fb.doEmailVerify(email, history)}>
+                      Click here to send verification email</NavLink>
+                  }
+                </p> :
+                <p style={{ color: 'red'}}>{error}</p>
+            }
             <form onSubmit={handleSubmit}>
-              <div className="field-item">
-                <div className="field-wrap">
-                  <input
-                    type="text"
-                    name="code"
-                    className="input-bordered"
-                    placeholder="Reset Code"
-                    value={ code }
-                    onChange={ handleChange }
-                  />
-                </div>
-              </div>
               <div className="field-item">
                 <div className="field-wrap">
                   <input
@@ -61,5 +60,5 @@ const PassResetForm = ({ handleSubmit, code, password, error, handleChange}) =>{
 
     </body>
   )
-}
+};
 export default PassResetForm;

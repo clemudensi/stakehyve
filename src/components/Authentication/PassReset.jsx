@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import querySearch from 'stringquery';
 import PassResetForm from '../Authentication/PassResetForm';
 import { fb } from '../../utils/firebase';
 
 
-const LoginForm = ({ history }) => {
-
+const LoginForm = ({ history, location }) => {
+  const { oobCode } = querySearch(location.search);
   const [inputs, setInputs] = useState({});
   const [error, setError] = useState('');
   const handleChange = (event) => {
@@ -12,34 +13,38 @@ const LoginForm = ({ history }) => {
     setInputs(inputs => ({...inputs, [event.target.name]: event.target.value}));
   };
 
-  const { code, password } = inputs;
-
+  const { password } = inputs;
   const handleSubmit = e => {
     e.preventDefault();
     fb.doResetPassword(
-      code,
+      oobCode,
       password)
       .then(() => {
-        history.push('/')
+        fb.doSignInWithEmailAndPassword(localStorage.getItem('user'), password).
+        then(() => {
+          switch ((fb.getCurrentUser()).emailVerified) {
+            case true:
+              localStorage.removeItem('user');
+              history.push('/dashboard');
+              break;
+            case false:
+              setError('Email has not been verified');
+              break;
+            default:
+              return null
+          }
+        })
       })
-      .catch((error) =>{
-        switch (error.code) {
-          case 'auth/wrong-password':
-            setError('Wrong Password');
-            break;
-          case 'auth/user-not-found':
-            setError('User with email address not Found');
-            break;
-          default:
-            setError('')
-        }
+      .catch((error) => {
+        setError(error.code)
       });
   };
 
   return (
     <PassResetForm
+      history={history}
+      email={localStorage.getItem('user')}
       handleSubmit={handleSubmit}
-      email={code}
       password={password}
       error={error}
       handleChange={handleChange}

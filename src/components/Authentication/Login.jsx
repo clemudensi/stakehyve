@@ -1,8 +1,10 @@
 import React from 'react';
 import './login.css';
 import EOSIcon from "../../assets/images/EOS.svg";
+import { fb } from '../../utils/firebase';
+import { NavLink } from 'react-router-dom';
 
-const Login = ({ handleSubmit, email, password, error, handleChange}) =>{
+const Login = ({ handleSubmit, email, password, error, handleChange, history}) =>{
 
     return(
         <body className="nk-body body-wider bg-dark page-loaded chrome no-touch">
@@ -17,7 +19,16 @@ const Login = ({ handleSubmit, email, password, error, handleChange}) =>{
                         <h5 className="ath-heading title">Welcome Back!
                         <small class="tc-default">signin to your Earnathon Account</small>
                         </h5>
-                        <p style={{ color: 'red'}}>{error}</p>
+                        {
+                            error === 'Email has not been verified' ?
+                              <p style={{ color: 'red'}}>{error} <br/>
+                              {
+                                  <NavLink onClick={()=>fb.doEmailVerify(email, history)}>
+                                  Click here to send verification email</NavLink>
+                              }
+                              </p> :
+                              <p style={{ color: 'red'}}>{error}</p>
+                        }
                         <form action="./">
                             <div className="field-item">
                                 <div className="field-wrap">

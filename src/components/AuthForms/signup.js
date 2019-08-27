@@ -19,30 +19,24 @@ const SignUpForm = ({ history }) => {
         email,
         password1,
         fname,
-        lname
+        lname,
+        history
       );
-      // console.log(res, 'res');
-      // response(res);
-      switch (res.code) {
-        case 'auth/email-already-in-use':
-          setError(res.message);
-          break;
-        case '':
-          signUpSuccess('');
-          break;
-        default:
-          return res
-      }
-      if (res.code !== 'auth/email-already-in-use' || undefined){
-        setFname('');
-        setLname('');
+      // console.log(res, 'res')
+      if (res.code === 'auth/email-already-in-use') {
+        setError(res.message);
+        setEmail('');
+        setPassword('');
+      } else {
         setEmail('');
         setPassword('');
         signUpSuccess('You have successfully created an account check your email to continue')
       }
     } catch (err) {
       if(err.code){
-        setError(err.message)
+        setError(err.message);
+        setEmail('');
+        setPassword('');
       }
     }
   };

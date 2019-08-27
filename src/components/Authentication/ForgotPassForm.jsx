@@ -5,7 +5,7 @@ import EOSIcon from '../../assets/images/EOS.svg';
 // import "./theme.css";
 // // import "./vendor.bundle.css";
 
-const ForgotPassForm = ({ email, error, handleChange, handleSubmit }) =>{
+const ForgotPassForm = ({ email, error, response, handleChange, handleSubmit }) =>{
     return(
 
         <body className="nk-body body-wider bg-dark page-loaded chrome no-touch">
@@ -20,6 +20,11 @@ const ForgotPassForm = ({ email, error, handleChange, handleSubmit }) =>{
                             <h5 className="ath-heading title">Reset Password
                                 <small class="tc-default">signin to your Earnathon Account</small>
                             </h5>
+                            {
+                                response ?
+                                  <p style={{ color: 'green'}}>{response}</p> :
+                                  null
+                            }
                             <p style={{ color: 'red'}}>{error}</p>
                             <form onSubmit={handleSubmit}>
                                 <div className="field-item">
@@ -44,8 +49,8 @@ const ForgotPassForm = ({ email, error, handleChange, handleSubmit }) =>{
                         
                         </div>
                         <div className="ath-note text-center tc-light">
-                        Don’t have an account? <a href="page-register.html"> <strong>Sign up here</strong></a><br/>
-                        Have an account? <a href="page-register.html"> <strong>Sign in here</strong></a>
+                        Don’t have an account? <a href="/signup"> <strong>Sign up here</strong></a><br/>
+                        Have an account? <a href="/login"> <strong>Sign in here</strong></a>
                         </div>
                     </div>
                 </main>

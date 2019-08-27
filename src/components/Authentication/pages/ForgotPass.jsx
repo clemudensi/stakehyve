@@ -21,7 +21,9 @@ const ForgotPass = ({ history }) => {
       email,
       )
       .then(() => {
-        setResponse('Check your email to continue')
+        localStorage.setItem('user', email);
+        setResponse('Check your email to continue');
+        setInputs(inputs => ({...inputs, [e.target.name]: ''}))
       })
       .catch((error) =>{
         return error.code ?

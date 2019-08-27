@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Login from '../Authentication/Login';
 import { fb } from '../../utils/firebase';
 
-
 const LoginForm = ({ history }) => {
 
   const [inputs, setInputs] = useState({});
@@ -20,7 +19,16 @@ const LoginForm = ({ history }) => {
       email,
       password)
       .then(() => {
-      history.push('/')
+        switch ((fb.getCurrentUser()).emailVerified) {
+          case true:
+            history.push('/dashboard');
+            break;
+          case false:
+            setError('Email has not been verified');
+            break;
+          default:
+            return null
+        }
     })
       .catch((error) =>{
         switch (error.code) {
@@ -43,6 +51,7 @@ const LoginForm = ({ history }) => {
       password={password}
       error={error}
       handleChange={handleChange}
+      history={history}
     />
   );
 };
