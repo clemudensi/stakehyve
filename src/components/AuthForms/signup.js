@@ -3,12 +3,8 @@ import { withRouter } from 'react-router';
 import { fb } from '../../utils/firebase';
 import SignUp from '../Authentication/SignUp';
 
-const SignUpForm = ({ history }) => {
-  const [ fname, setFname ] = useState('');
-  const [ lname, setLname ] = useState('');
-  const [ email, setEmail ] = useState('');
-  const [ password1, setPassword ] = useState('');
-  // const [ result, response ] = useState('');
+const SignUpForm = ({ history, firstName, lastName, email, handleChange, password }) => {
+  const [, setInputs] = useState({});
   const [ error, setError ] = useState('');
   const [ signUp, signUpSuccess ] = useState('');
 
@@ -17,51 +13,44 @@ const SignUpForm = ({ history }) => {
     try {
       const res = await fb.doCreateUserWithEmailAndPassword(
         email,
-        password1,
-        fname,
-        lname,
+        password,
+        firstName,
+        lastName,
         history
       );
       // console.log(res, 'res')
       if (res.code === 'auth/email-already-in-use') {
         setError(res.message);
-        setEmail('');
-        setPassword('');
+        setInputs({ email: '', password: ''})
       } else {
-        setEmail('');
-        setPassword('');
+        setInputs({ email: '', password: ''});
         signUpSuccess('You have successfully created an account check your email to continue')
       }
     } catch (err) {
       if(err.code){
         setError(err.message);
-        setEmail('');
-        setPassword('');
+        setInputs({ email: '', password: ''})
       }
     }
   };
-  // console.log(result, 'Rez')
 
   const isInvalid =
   // password1 !== password2 ||
-  password1 === '' ||
+  password === '' ||
   email === '' ||
-  fname === '';
+  firstName === '';
 
   return (
 
       <SignUp
-        fname={fname}
-        setFname={setFname}
-        lname={lname}
-        setLname={setLname}
+        fname={firstName}
+        lname={lastName}
         email={email}
-        setEmail={setEmail}
-        password1={password1}
-        setPassword={setPassword}
+        password1={password}
         isInvalid={isInvalid}
         success={signUp}
         error={error}
+        handleChange={handleChange}
         handleSubmit={handleSubmit}
       />
   );

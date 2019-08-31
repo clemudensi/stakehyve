@@ -1,35 +1,29 @@
 import React, { useState } from 'react';
 import { fb } from '../../../utils/firebase';
 import ForgotPassForm from '../ForgotPassForm';
+import PropTypes from 'prop-types';
 
 
-const ForgotPass = ({ history }) => {
+const ForgotPass = ({ email, handleChange }) => {
 
-  const [inputs, setInputs] = useState({});
+  const [, setInputs] = useState({});
   const [error, setError] = useState('');
   const [response, setResponse] = useState('');
-  const handleChange = (event) => {
-    event.persist();
-    setInputs(inputs => ({...inputs, [event.target.name]: event.target.value}));
-    setResponse('')
-  };
-
-  const { email } = inputs;
 
   const handleSubmit = e => {
     e.preventDefault();
-    fb.doResetEmail(
-      email,
-      )
+    fb.sendResetToken(
+      email
+    )
       .then(() => {
         localStorage.setItem('user', email);
         setResponse('Check your email to continue');
-        setInputs({email: ''})
+        setInputs({email: ''});
       })
       .catch((error) =>{
         return error.code ?
           setError(error.code) :
-          null
+          null;
       });
   };
 
@@ -42,6 +36,11 @@ const ForgotPass = ({ history }) => {
       handleChange={handleChange}
     />
   );
+};
+
+ForgotPass.propTypes = {
+  email: PropTypes.string.isRequired,
+  handleChange: PropTypes.func,
 };
 
 export default ForgotPass;

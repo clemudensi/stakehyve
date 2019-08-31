@@ -2,27 +2,22 @@ import React, { useState } from 'react';
 import querySearch from 'stringquery';
 import PassResetForm from '../Authentication/PassResetForm';
 import { fb } from '../../utils/firebase';
+import PropTypes from 'prop-types';
 
 
-const LoginForm = ({ history, location }) => {
-  const { oobCode } = querySearch(location.search);
-  const [inputs, setInputs] = useState({});
+const PassReset = ({ history, oobCode, password, handleChange }) => {
   const [error, setError] = useState('');
-  const handleChange = (event) => {
-    event.persist();
-    setInputs(inputs => ({...inputs, [event.target.name]: event.target.value}));
-  };
 
-  const { password } = inputs;
   const handleSubmit = e => {
     e.preventDefault();
     fb.doResetPassword(
       oobCode,
-      password)
+      password
+    )
       .then(() => {
         fb.doSignInWithEmailAndPassword(localStorage.getItem('user'), password).
-        then(() => {
-          switch ((fb.getCurrentUser()).emailVerified) {
+          then(() => {
+            switch ((fb.getCurrentUser()).emailVerified) {
             case true:
               localStorage.removeItem('user');
               history.push('/dashboard');
@@ -31,15 +26,15 @@ const LoginForm = ({ history, location }) => {
               setError('Email has not been verified');
               break;
             default:
-              return null
-          }
-        })
+              return null;
+            }
+          });
       })
       .catch((error) => {
         if (error.code === 'auth/invalid-action-code') {
           setError('Reset code has expired or have been used previously');
         } else {
-          setError(error.code)
+          setError(error.code);
         }
       });
   };
@@ -56,4 +51,11 @@ const LoginForm = ({ history, location }) => {
   );
 };
 
-export default LoginForm;
+PassReset.propTypes = {
+  oobCode: PropTypes.string,
+  password: PropTypes.string,
+  handleChange: PropTypes.func,
+  history: PropTypes.object,
+};
+
+export default PassReset;

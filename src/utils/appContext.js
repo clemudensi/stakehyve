@@ -2,6 +2,6 @@ import React from 'react';
 
 // this is the equivalent to the createStore method of Redux
 
-const Context = React.createContext();
+const AppContext = React.createContext();
 
-export default Context;
+export default AppContext;

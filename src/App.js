@@ -4,10 +4,11 @@ import Routes from './routes';
 import ProtectedRoutes from './routes/protected';
 import MyLoader from './components/shared/loaders';
 import Home from './components/Authentication/pages/Home';
+import withAuth from './HOC/WithAuth';
 import NotFound from './components/notFound/NotFound';
 
 const App = (props) => {
-  
+
   return (
     <Fragment>
       <React.Suspense fallback={<MyLoader />}>
@@ -29,11 +30,11 @@ const App = (props) => {
               />
             ))}
           </Route>
-          {/*<Route path="*" component={NotFound}/>*/}
+          <Route path="*" component={NotFound}/>
         </Router>
       </React.Suspense>
     </Fragment>
   );
 };
 
-export default App;
+export default withAuth(App);

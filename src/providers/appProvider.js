@@ -1,32 +1,35 @@
 import React, { useState } from 'react';
-import FirebaseContext from '../utils/appContext';
+import AppContext from '../utils/appContext';
+import querySearch from 'stringquery';
 
-export const LoginForm = ({ history, children }) => {
+export const AuthContext = ({ history, children }) => {
 
+  const { oobCode } = querySearch(window.location.search);
   const [inputs, setInputs] = useState({});
   const [error, setError] = useState('');
 
-  const { email, password } = inputs;
+  const { email, password, firstName, lastName } = inputs;
+  // setError('');
+  const handleChange = (event) => {
+    event.persist();
+    setInputs(inputs => ({ ...inputs, [event.target.name]: event.target.value }));
+  };
 
   return (
-    <FirebaseContext.Provider
+    <AppContext.Provider
       value={{
-        email: () => {
-          setInputs({ email })
-        },
-        password: () => {
-          setInputs({ password })
-        },
-        error: () => {
-          setError({ error })
-        },
-        handleChange: event => {
-          event.persist();
-          setInputs(inputs => ({...inputs, [event.target.name]: event.target.value}));
-        },
+        email,
+        password,
+        firstName,
+        lastName,
+        error,
+        oobCode,
+        handleChange
       }}
     >
       {children}
-    </FirebaseContext.Provider>
+    </AppContext.Provider>
   );
 };
+
+export default AuthContext;

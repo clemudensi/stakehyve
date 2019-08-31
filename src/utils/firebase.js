@@ -21,7 +21,7 @@ export default class Firebase {
 
   }
 
-  doEmailVerify = async (email, history) => {
+  async doEmailVerify(email, history){
    try {
      await this.auth.currentUser.sendEmailVerification();
      alert(`verification email has been sent. check ${email} to continue`);
@@ -32,25 +32,10 @@ export default class Firebase {
        error
      }
    }
-    //  .then((res) => {
-    //    console.log(res, 'res')
-    //   return {
-    //     msg: "email is sent",
-    //     res
-    //   }
-    // }).catch((error) => {
-    //    console.log(error, 'error')
-    //   return {
-    //     msg: "email not sent",
-    //     error
-    //   }
-    // })
   };
 
-
   //API AUTHENTICATIONS FIREBASE
-
-  doCreateUserWithEmailAndPassword = async (email, password, fname, lname, history) => {
+  async doCreateUserWithEmailAndPassword (email, password, fname, lname, history) {
     try{
      await this.auth.createUserWithEmailAndPassword(email, password)
      .then(cred => {
@@ -67,18 +52,19 @@ export default class Firebase {
     }
   };
 
-  doSignInWithEmailAndPassword = (email, password) => {
+  doSignInWithEmailAndPassword (email, password) {
     return this.auth.signInWithEmailAndPassword(email, password);
   };
 
-  doResetEmail = (email) =>
-    this.auth.sendPasswordResetEmail(email);
+  sendResetToken (email) {
+    return this.auth.sendPasswordResetEmail(email)
+  };
 
-  doResetPassword = (code, password) =>
-    this.auth.confirmPasswordReset(code, password);
+  doResetPassword (code, password) {
+    return this.auth.confirmPasswordReset(code, password)
+  };
 
-
-  onAuthUserListener = (next, fallback) =>
+  onAuthUserListener (next, fallback){
     this.auth.onAuthStateChanged(async user => {
       try {
         if (this.auth.currentUser) {
@@ -100,18 +86,23 @@ export default class Firebase {
         console.log('fallback2');
         return fallback();
       }
-  });
+    });
+  }
 
-  doPasswordUpdate = password =>
-    this.auth.currentUser.updatePassword(password);
+  doPasswordUpdate (password){
+    return this.auth.currentUser.updatePassword(password)
+  }
 
-  doSignOut = () => this.auth.signOut();
+  doSignOut () {
+    return this.auth.signOut()
+  };
 
-  getCurrentUser = () => this.auth.currentUser;
+  getCurrentUser (){
+    return this.auth.currentUser
+  };
 
-//Users API
-
-  getMe = async (uid, callback) => {
+  //Users API
+  async getMe (uid, callback) {
     const doc = this.getUserDoc(uid);
     await doc.onSnapshot(doc => {
       const user = doc.data();
@@ -119,7 +110,7 @@ export default class Firebase {
     })
   };
 
-  getUser = async uid => {
+  async getUser (uid) {
     const doc = this.getUserDoc(uid)
       .collection('privateDate')
       .doc('wallet');
@@ -129,14 +120,19 @@ export default class Firebase {
     }
   };
 
-  getUserDoc = uid => this.db.collection('users').doc(uid);
+  getUserDoc (uid) {
+    this.db.collection('users').doc(uid);
+  }
 
-  getUsers = () => this.db.collection('users');
+  getUsers () {
+    this.db.collection('users');
+  }
 
-  getUserCourses = async uid =>
+  async getUserCourses (uid) {
     await this.getUserDoc()
       .collection('courses')
       .get();
-    }
+  }
+}
 
 export const fb = new Firebase();

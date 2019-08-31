@@ -59,4 +59,13 @@ const ForgotPassForm = ({ email, error, response, handleChange, handleSubmit }) 
     </body>
   );
 };
+
+ForgotPassForm.propTypes = {
+  email: PropTypes.string.isRequired,
+  handleChange: PropTypes.func,
+  error: PropTypes.string,
+  response: PropTypes.string,
+  handleSubmit: PropTypes.func,
+};
+
 export default ForgotPassForm;
