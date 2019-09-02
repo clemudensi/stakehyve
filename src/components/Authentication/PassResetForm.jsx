@@ -5,8 +5,7 @@ import EOSIcon from '../../assets/images/EOS.svg';
 import { NavLink } from 'react-router-dom';
 import { fb } from '../../utils/firebase';
 
-const PassResetForm = ({ handleSubmit, email, password, error, history, handleChange}) =>{
-
+const PassResetForm = ({ handlePassReset, email, password, error, history, handleChange}) =>{
   return(
     <body className="nk-body body-wider bg-dark page-loaded chrome no-touch">
       <div className="nk-wrap">
@@ -29,7 +28,7 @@ const PassResetForm = ({ handleSubmit, email, password, error, history, handleCh
                   </p> :
                   <p style={{ color: 'red'}}>{error}</p>
               }
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handlePassReset}>
                 <div className="field-item">
                   <div className="field-wrap">
                     <input
@@ -69,7 +68,7 @@ PassResetForm.propTypes = {
   password: PropTypes.string,
   handleChange: PropTypes.func,
   history: PropTypes.object,
-  handleSubmit: PropTypes.func
+  handlePassReset: PropTypes.func
 };
 
 export default PassResetForm;

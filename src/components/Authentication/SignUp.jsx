@@ -1,7 +1,6 @@
 import React from 'react';
 import EOSIcon from '../../assets/images/EOS.svg';
 import './signup.css';
-import { Form } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 const SignUp = ({
@@ -13,7 +12,7 @@ const SignUp = ({
   isInvalid,
   success,
   error,
-  handleSubmit
+  handleSignUp
 }) =>{
   return(
     <body className="nk-body body-wider bg-dark page-loaded chrome no-touch">
@@ -103,7 +102,7 @@ const SignUp = ({
                   className="btn btn-primary btn-block btn-md"
                   type="submit"
                   disabled={ isInvalid }
-                  onClick={handleSubmit}
+                  onClick={handleSignUp}
                   size="huge"
                 >Create Account</button>
               </form>
@@ -130,7 +129,7 @@ SignUp.propTypes = {
   firstName: PropTypes.string,
   lastName: PropTypes.string,
   isInvalid: PropTypes.func,
-  handleSubmit: PropTypes.func,
+  handleSignUp: PropTypes.func,
 };
 
 export default SignUp;

@@ -21,32 +21,31 @@ export default class Firebase {
 
   }
 
-  async doEmailVerify(email, history){
+  doEmailVerify = async (email, history) => {
    try {
      await this.auth.currentUser.sendEmailVerification();
      alert(`verification email has been sent. check ${email} to continue`);
      history.push('/')
    }catch (error) {
      return {
-       msg: "email not sent",
+       message: "email not sent",
        error
      }
    }
   };
 
   //API AUTHENTICATIONS FIREBASE
-  async doCreateUserWithEmailAndPassword (email, password, fname, lname, history) {
+  doCreateUserWithEmailAndPassword = async (email, password, firstName, lastName, history) => {
     try{
-     await this.auth.createUserWithEmailAndPassword(email, password)
-     .then(cred => {
-      fb.db.collection('users').doc(cred.user.uid).set({
-        firstName: fname,
-        lastName: lname,
+     const cred = await this.auth.createUserWithEmailAndPassword(email, password);
+      await fb.db.collection('users').doc(cred.user.uid).set({
+        firstName: firstName,
+        lastName: lastName,
         email,
         uid: cred.user.uid,
-        initials: fname[ 0 ] + lname[ 0 ]
-        })
-     }).then( () => this.doEmailVerify(email, history))
+        initials: firstName[ 0 ] + lastName[ 0 ]
+      });
+      return cred ? this.doEmailVerify(email, history) : null
     }catch(err){
      return err
     }
@@ -56,9 +55,7 @@ export default class Firebase {
     return this.auth.signInWithEmailAndPassword(email, password);
   };
 
-  sendResetToken (email) {
-    return this.auth.sendPasswordResetEmail(email)
-  };
+  sendResetToken = (email) => this.auth.sendPasswordResetEmail(email);
 
   doResetPassword (code, password) {
     return this.auth.confirmPasswordReset(code, password)

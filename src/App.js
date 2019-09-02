@@ -1,11 +1,10 @@
 import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom';
 import Routes from './routes';
 import ProtectedRoutes from './routes/protected';
 import MyLoader from './components/shared/loaders';
 import Home from './components/Authentication/pages/Home';
 import withAuth from './HOC/WithAuth';
-import NotFound from './components/notFound/NotFound';
 
 const App = (props) => {
 
@@ -30,11 +29,10 @@ const App = (props) => {
               />
             ))}
           </Route>
-          <Route path="*" component={NotFound}/>
         </Router>
       </React.Suspense>
     </Fragment>
   );
 };
 
-export default withAuth(App);
+export default withRouter(withAuth(App));

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import ResetPassword from '../PassReset';
+import ResetPassword from '../PassResetForm';
 import { Redirect } from 'react-router';
 import AuthError from '../AuthError';
 
@@ -17,9 +17,9 @@ export const verifyUserEmail = async (apiKey, oobCode) => {
 };
 
 
-const Auth = ({ history, location }) => {
+const Auth = ({ history, location, handlePassReset, email, password, handleChange, error }) => {
   const [state, setState] = useState('');
-  const { done, error, redirectTo } = state;
+  const { done, redirectTo } = state;
   const params = new URLSearchParams(window.location.search);
   const apiKey = params.get('apiKey');
   const mode = params.get('mode');
@@ -40,22 +40,32 @@ const Auth = ({ history, location }) => {
     }
   };
 
-  useEffect(() => {
-  if (mode === 'verifyEmail') {
-    return runVerifyUserEmail();
-  }else if(mode === 'resetPassword'){
-    return  <ResetPassword
-      history={history}
-      location={location}
-    />
-  }
-
-  }, [done, error, redirectTo]);
+  // useEffect(() => {
+  // if (mode === 'verifyEmail') {
+  //   return runVerifyUserEmail();
+  // }else if(mode === 'resetPassword'){
+  //   return  <ResetPassword
+  //     history={history}
+  //     location={location}
+  //     email={email}
+  //     handlePassReset={handlePassReset}
+  //     password={password}
+  //     error={error}
+  //     handleChange={handleChange}
+  //   />
+  // }
+  //
+  // }, [done, error, redirectTo]);
   switch (mode) {
     case 'resetPassword':
       return <ResetPassword
         history={history}
         location={location}
+        email={email}
+        handlePassReset={handlePassReset}
+        password={password}
+        error={error}
+        handleChange={handleChange}
       />;
     case 'verifyEmail':
       return runVerifyUserEmail();

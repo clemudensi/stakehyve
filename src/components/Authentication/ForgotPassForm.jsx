@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 // import "./theme.css";
 // // import "./vendor.bundle.css";
 
-const ForgotPassForm = ({ email, error, response, handleChange, handleSubmit }) =>{
+const ForgotPassForm = ({ email, error, response, handleChange, handleForgotPass }) =>{
   return(
 
     <body className="nk-body body-wider bg-dark page-loaded chrome no-touch">
@@ -27,7 +27,7 @@ const ForgotPassForm = ({ email, error, response, handleChange, handleSubmit }) 
                   null
               }
               <p style={{ color: 'red'}}>{error}</p>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleForgotPass}>
                 <div className="field-item">
                   <div className="field-wrap">
                     <input
@@ -65,7 +65,7 @@ ForgotPassForm.propTypes = {
   handleChange: PropTypes.func,
   error: PropTypes.string,
   response: PropTypes.string,
-  handleSubmit: PropTypes.func,
+  handleForgotPass: PropTypes.func,
 };
 
 export default ForgotPassForm;

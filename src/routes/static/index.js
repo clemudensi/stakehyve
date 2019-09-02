@@ -1,8 +1,9 @@
 import React from 'react';
-import { AsyncHome } from './static';
+import { AsyncHome, NotFound } from './static';
 
 const authRoutes = [
   { path: '/', name: 'Home', render: props => <AsyncHome {...props} />  },
+  { path: '*', name: 'Not-Found', render: NotFound  },
 ];
 
 export default authRoutes;

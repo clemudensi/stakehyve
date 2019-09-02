@@ -5,10 +5,10 @@ import { fb } from '../../utils/firebase';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const Login = ({ handleSubmit, email, password, error, handleChange, history}) => {
+const Login = ({ handleLogin, email, password, error, handleChange, history}) => {
 
   return(
-    <body className="nk-body body-wider bg-dark page-loaded chrome no-touch">
+    <div className="nk-body body-wider bg-dark page-loaded chrome no-touch">
       <div className="nk-wrap">
         
         <main className="nk-pages nk-pages-centered bg-theme">
@@ -66,7 +66,7 @@ const Login = ({ handleSubmit, email, password, error, handleChange, history}) =
                 </div>
                 <button
                   className="btn btn-primary btn-block btn-md"
-                  onClick={ handleSubmit }
+                  onClick={ handleLogin }
                 >Sign In</button>
               </form>
                         
@@ -79,7 +79,7 @@ const Login = ({ handleSubmit, email, password, error, handleChange, history}) =
         
       </div>
             
-    </body>
+    </div>
   );
 };
 
@@ -89,7 +89,7 @@ Login.propTypes = {
   password: PropTypes.string,
   handleChange: PropTypes.func,
   history: PropTypes.object,
-  handleSubmit: PropTypes.func
+  handleLogin: PropTypes.func
 };
 
 export default Login;
