@@ -6,4 +6,4 @@ const Dashboard = () => (
   </React.Fragment>
 );
 
-export default Dashboard
+export default Dashboard;
