@@ -8,6 +8,7 @@ const withAuth = (AuthComponent) => (
   ({ history }) => {
     const [inputs, setInputs] = useState({ email: '', password: '', firstName: '', lastName: ''});
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
     const [ signUp, signUpSuccess ] = useState('');
     const [response, setResponse] = useState('');
     const { email, password, firstName, lastName } = inputs;
@@ -22,6 +23,7 @@ const withAuth = (AuthComponent) => (
     const handleSignUp = async e => {
       e.preventDefault();
       try {
+        setLoading(true);
         const res = await fb.doCreateUserWithEmailAndPassword(
           email,
           password,
@@ -47,6 +49,7 @@ const withAuth = (AuthComponent) => (
     //user login
     const handleLogin = e => {
       e.preventDefault();
+      setLoading(true);
       fb.doSignInWithEmailAndPassword(
         email,
         password)
@@ -79,6 +82,7 @@ const withAuth = (AuthComponent) => (
     //send password reset link
     const handleForgotPass = e => {
       e.preventDefault();
+      setLoading(true);
       fb.sendResetToken(
         email
       )
@@ -98,6 +102,7 @@ const withAuth = (AuthComponent) => (
     // reset password
     const handlePassReset = e => {
       e.preventDefault();
+      setLoading(true);
       fb.doResetPassword(
         oobCode,
         password
@@ -150,6 +155,7 @@ const withAuth = (AuthComponent) => (
                 handleLogin={handleLogin}
                 handleForgotPass={handleForgotPass}
                 handlePassReset={handlePassReset}
+                loading={loading}
               />
             )
           }
