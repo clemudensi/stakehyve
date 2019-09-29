@@ -2,8 +2,9 @@ import React from 'react';
 import './login.css';
 import EOSIcon from '../../assets/images/EOS.svg';
 import { fb } from '../../utils/firebase';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
+
 
 const Login = ({ handleLogin, email, password, error, handleChange, history}) => {
 
@@ -11,14 +12,14 @@ const Login = ({ handleLogin, email, password, error, handleChange, history}) =>
     <div className="nk-body body-wider bg-dark page-loaded chrome no-touch">
       <div className="nk-wrap">
         
-        <main className="nk-pages nk-pages-centered bg-theme">
+      <main className="nk-pages nk-pages-centered bg-theme bg-pic">
           <div className="ath-container">
             <div className="ath-header text-center">
-              <a href="./" className="ath-logo"><img src={EOSIcon} alt="logo" className="signlog"/></a>
+            <Link to="/" className="ath-logo"><img src={EOSIcon} alt="logo" className="signlog"/></Link>
             </div>
             <div className="ath-body">
               <h5 className="ath-heading title">Welcome Back!
-                <small className="tc-default">signin to your Earnathon Account</small>
+                <small className="tc-default">signin to Earnathon</small>
               </h5>
               {
                 error === 'Email has not been verified' ?
@@ -32,6 +33,7 @@ const Login = ({ handleLogin, email, password, error, handleChange, history}) =>
               }
               <form action="./">
                 <div className="field-item">
+                <label>Email</label>
                   <div className="field-wrap">
                     <input
                       type="email"
@@ -44,6 +46,7 @@ const Login = ({ handleLogin, email, password, error, handleChange, history}) =>
                   </div>
                 </div>
                 <div className="field-item">
+                <label>Password</label>
                   <div className="field-wrap">
                     <input
                       type="password"
@@ -56,12 +59,12 @@ const Login = ({ handleLogin, email, password, error, handleChange, history}) =>
                   </div>
                 </div>
                 <div className="d-flex justify-content-between align-items-center pdb-r">
-                  <div className="field-item pb-0">
+                  {/* <div className="field-item pb-0">
                     <input className="input-checkbox" id="remember-me-2" type="checkbox"/>
                     <label htmlFor="remember-me-2">Remember Me</label>
-                  </div>
+                  </div> */}
                   <div className="forget-link fz-6">
-                    <a href="/forgot">Forgot password?</a>
+                    <Link to="/forgot">Forgot password?</Link>
                   </div>
                 </div>
                 <button
@@ -69,11 +72,14 @@ const Login = ({ handleLogin, email, password, error, handleChange, history}) =>
                   onClick={ handleLogin }
                 >Sign In</button>
               </form>
+              <div className="ath-note text-center tc-light">
+                        Don’t have an account?  <Link to="/signup">
+                                <strong>Sign up here</strong>
+                            </Link>
+            </div>
                         
             </div>
-            <div className="ath-note text-center tc-light">
-                        Don’t have an account? <a href="/signup"> <strong>Sign up here</strong></a>
-            </div>
+           
           </div>
         </main>
         

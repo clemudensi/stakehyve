@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import ResetPassword from '../PassResetForm';
+import ResetPassword from './PassResetForm';
 import { Redirect } from 'react-router';
-import AuthError from '../AuthError';
+import AuthError from './AuthError';
 
 const googleUrl =
   'https://www.googleapis.com/identitytoolkit/v3/relyingparty/setAccountInfo?key=';

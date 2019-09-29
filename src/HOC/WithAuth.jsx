@@ -56,7 +56,7 @@ const withAuth = (AuthComponent) => (
         .then(() => {
           switch ((fb.getCurrentUser()).emailVerified) {
           case true:
-            window.location.replace('/dashboard');
+            window.location.replace('/home');
             break;
           case false:
             setError('Email has not been verified');
@@ -113,7 +113,7 @@ const withAuth = (AuthComponent) => (
             switch ((fb.getCurrentUser()).emailVerified) {
             case true:
               localStorage.removeItem('user');
-              history.push('/dashboard');
+              history.push('/home');
               break;
             case false:
               setError('Email has not been verified');

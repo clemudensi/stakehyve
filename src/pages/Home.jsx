@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from '../../Header';
-import Screen from '../../HomeScreen';
-import Videos from '../../videosLayout';
-import AirDrop from '../../Airdrop';
-import How from '../../getStarted';
-import Footer from '../../Footer';
+import Header from '../components/Header/Assets';
+import Screen from '../components/HomeScreen';
+import Videos from '../components/videosLayout';
+import AirDrop from '../components/Airdrop';
+import How from '../components/getStarted';
+import Footer from '../components/Footer';
 
 const Home = ( ) => {
 

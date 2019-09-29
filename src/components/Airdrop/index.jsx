@@ -1,18 +1,18 @@
 import React from 'react';
 import "./airdrop.css";
+import {Link} from "react-router-dom";
+import Mask from "../../assets/images/MaskGroup3.svg";
 
 
 const Airdrop = () => {
     return(
-    <section className="section" id="mvp" style={{paddingTop: "30px"}}>
+    <section className="section" id="mvp" style={{paddingTop: "30px",overflow: "hidden", background: 'rgb(23, 29, 35)'}}>
 
                
-                <div className="ard-2">
+                {/* <div className="ard-2">
                     <img src="assets/images/MaskGroup6.svg"/>
-                </div>
-                <div className="ard-1">
-                    <img src="assets/images/MaskGroup3.svg"/>
-                </div>
+                </div> */}
+                <div className="ard-1"><img src={Mask} alt="mask"/></div>
 
                 <div className="container container-xxl" style={{position: "relative"}}>
                     <div className="nk-block">
@@ -29,12 +29,12 @@ const Airdrop = () => {
                                     <div className="feature ">
                                         <h2 className="title title-xl" title="Advisors">Earnathon is redefining airdrop</h2>
                                         <div className="feature-text">
-                                            <p>Pay Bounties to airdrop paricipants who learn about your project not just radomly paying bounties and expecting a blah blah blah</p>
+                                            <p style={{color: "white"}}>Pay Bounties to airdrop paricipants who learn about your project not just radomly paying bounties and expecting a blah blah blah</p>
                                         </div>
                                     </div>
                                     
-                                    <div className="text-center text-sm-left animated fadeInUp" >
-                                        <a href="#" className="btn">Learn More</a>
+                                    <div className="text-center text-sm-left" >
+                                        <Link to="/Airdrop" className="btn">Learn More</Link>
                                     </div>
                                     {/* visibility: visible; animation-delay: 0.9s; */}
                                 </div>

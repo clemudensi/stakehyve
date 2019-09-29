@@ -1,0 +1,41 @@
+.yala {
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.03);
+    opacity: 1;
+    cursor: pointer;
+    display: flex;
+    margin-bottom: 24px;
+    background: #0b0e11 !important;
+    border-radius: 8px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #242b30;
+    border-image: initial;
+    transition: box-shadow 500ms ease 0s, opacity 500ms ease 0s;
+    overflow: hidden;
+    max-width: 900px;
+    margin: 0 auto;
+    -webkit-transform: scale(.97);
+    transform: scale(.97);
+    transition: background .3s ease,-webkit-transform .3s ease;
+    transition: transform .3s ease,background .3s ease;
+    transition: transform .3s ease,background .3s ease,-webkit-transform .3s ease;
+} 
+
+.yala:hover, .yala:active, .yala:focus{
+    background: #1e1f26 !important;
+    border-bottom-color: transparent;
+    transform: scale(1);
+    border-radius: 4px;
+  
+}
+.yel-btn{
+    color: #ffb400 !important;
+}
+.ard-3{
+    margin-right: 0;
+    top: -7em;
+    right: 0;
+    position: absolute;
+    width: 500px;
+    overflow: hidden;
+}

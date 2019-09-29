@@ -1,12 +1,12 @@
 .ard-1{
     margin-right: 0;
-    top: 15em;
-    left: 0;;
+    top: -0em;
+    left: 0;
     position: absolute;
-    height: 400px;
-    width: 200px;
+    height: auto;
+    width: 550px;
     overflow: hidden;
-    opacity:0.1
+    opacity: 0.6;
 }
 .ard-2{
     margin-right: 0;

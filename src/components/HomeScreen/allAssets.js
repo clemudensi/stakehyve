@@ -2,36 +2,38 @@ import React from 'react';
 // import leftImg from "../../assets/images/froup.svg";
 // import rightImg from "../../assets/images/froup2.svg";
 // import HeadImg from "../../assets/images/Group7.svg";
-import Vid4 from '../../assets/images/BNB.svg';
+// import Vid4 from "../../assets/images/BNB.svg";
+import leftImg from "../../assets/images/froup.svg";
+import rightImg from "../../assets/images/froup2.svg";
+// import './assets.css';
+import Search from '../search';
 
 const HomeScreen = () => {
     return(
-        <div className="banner banner-fs has-gfx tc-light __web-inspector-hide-shortcut__">
-               
-            <div className="nk-block nk-block-header my-auto">
-                <div className="container ">
-                    <div className="row align-items-center justify-content-center justify-content-lg-between gutter-vr-30px">
-                        <div className="col-lg-6 order-lg-last">
-                            <div className="banner-gfx banner-gfx-auto mt-small-30">
-                                <img src={ Vid4 } alt="header"/>
-                            </div>
-                        </div>
-                        <div className="col-xl-5 col-lg-6 col-sm-10 text-left text-lg-left">
-                            <div>
-                                <p className="blockHead"> Explore Binance Coin potentials</p>
-                            </div>
-                            <div className="banner-caption">
-                                <h1 className="title title-lg ttu">Earn Eos</h1>
-                                <p className="lead">EOSIS is a protocol designed for fast and free blockchain applications. Learn how it works and earn EOS to try out for yourself.</p>
-                                <div className="cpn-action">
-                                    <a className="btn" href="/">START COURSE</a>
+        <div className="header-banner bg-theme has-ovm" id="explore">
+				<div className="nk-banner">
+				    <div className="banner banner-page">
+				        <div className="banner-wrap">
+                            <div className="container">
+                                <div className="row justify-content-center">
+                                    <div className="col-xl-6 col-lg-9">
+                                        <div className="banner-caption cpn tc-light text-center">
+                                            <div className="cpn-head">
+                                                <h3 className="title ttu">All Assests To Earn</h3>
+                                                <Search/>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+				    </div>
+                    <div className="left-bars"><img src={rightImg} alt="rightbars"/></div>
+                <div className="right-bars"><img src={leftImg} alt="rightbars"/></div>
+				</div>
+                
+			</div>
+
     )
 }
 export default HomeScreen;

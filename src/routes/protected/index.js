@@ -1,8 +1,10 @@
 import React from 'react';
-import Dashboard from '../../components/dashboard/Dashboard';
+import Dashboard from '../../pages/dashboard';
+import Settings from '../../pages/settings';
 
 const protectedRoute = [
-  { path: '/dashboard', name: 'Dashboard', render: props => <Dashboard {...props} /> },
+  { path: '/home', name: 'Dashboard', render: props => <Dashboard {...props} /> },
+  { path: '/settings', name: 'Settings', render: props => <Settings {...props} /> },
 ];
 
 export default protectedRoute;
