@@ -1,6 +1,6 @@
 import React from 'react';
 import './login.css';
-import EOSIcon from '../../assets/images/EOS.svg';
+// import EOSIcon from '../../assets/images/EOS.svg';
 import { fb } from '../../utils/firebase';
 import { NavLink, Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -12,14 +12,14 @@ const Login = ({ handleLogin, email, password, error, handleChange, history}) =>
     <div className="nk-body body-wider bg-dark page-loaded chrome no-touch">
       <div className="nk-wrap">
         
-      <main className="nk-pages nk-pages-centered bg-theme bg-pic">
+        <main className="nk-pages nk-pages-centered bg-theme bg-pic">
           <div className="ath-container">
-            <div className="ath-header text-center">
-            <Link to="/" className="ath-logo"><img src={EOSIcon} alt="logo" className="signlog"/></Link>
-            </div>
+            {/*<div className="ath-header text-center">*/}
+            {/*  <Link to="/" className="ath-logo"><img src={EOSIcon} alt="logo" className="signlog"/></Link>*/}
+            {/*</div>*/}
             <div className="ath-body">
               <h5 className="ath-heading title">Welcome Back!
-                <small className="tc-default">signin to Earnathon</small>
+                <small className="tc-default">signin to StakeHyve</small>
               </h5>
               {
                 error === 'Email has not been verified' ?
@@ -33,7 +33,7 @@ const Login = ({ handleLogin, email, password, error, handleChange, history}) =>
               }
               <form action="./">
                 <div className="field-item">
-                <label>Email</label>
+                  <label>Email</label>
                   <div className="field-wrap">
                     <input
                       type="email"
@@ -46,7 +46,7 @@ const Login = ({ handleLogin, email, password, error, handleChange, history}) =>
                   </div>
                 </div>
                 <div className="field-item">
-                <label>Password</label>
+                  <label>Password</label>
                   <div className="field-wrap">
                     <input
                       type="password"
@@ -74,9 +74,9 @@ const Login = ({ handleLogin, email, password, error, handleChange, history}) =>
               </form>
               <div className="ath-note text-center tc-light">
                         Don’t have an account?  <Link to="/signup">
-                                <strong>Sign up here</strong>
-                            </Link>
-            </div>
+                  <strong>Sign up here</strong>
+                </Link>
+              </div>
                         
             </div>
            

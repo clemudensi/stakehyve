@@ -86,7 +86,7 @@ strong, b { font-weight: 500; }
 
 a { outline: 0 none; transition: all 0.5s; color: #16a3fe; }
 a:link, a:visited { text-decoration: none; }
-a:hover, a:focus, a:active { outline: 0; color: #23c99d; }
+a:hover, a:focus, a:active { outline: 0; color: #276ec9; }
 
 img { max-width: 100%; height: auto; }
 
@@ -322,7 +322,7 @@ h6, .h6, .fz-6 { font-size: 0.94rem; }
 .tc-default, .tc-default a { color: #415076 !important; }
 .tc-alternet, .tc-alternet a { color: #415076 !important; }
 .tc-primary, .tc-primary a { color: #16a3fe !important; }
-.tc-secondary, .tc-secondary a { color: #23c99d !important; }
+.tc-secondary, .tc-secondary a { color: #83c943 !important; }
 .tc-info, .tc-info a { color: #026bfb !important; }
 .tc-warning, .tc-warning a { color: #f6be26 !important; }
 .tc-success, .tc-success a { color: #39d884 !important; }
@@ -756,14 +756,14 @@ h6, .h6, .fz-6 { font-size: 0.94rem; }
     color: rgb(255, 255, 255);
     cursor: pointer;
     font-size: 14px;
-    background-color: #05b169;
+    background-color: #309ec9;
     margin: 0px;
     border-radius: 4px;
     transition: all 80ms ease-in-out 0s;
     padding: 12px 18px;
     border-width: 1px;
     border-style: solid;
-    border-color: #05b169;
+    border-color: #309ec9;
     border-image: initial;
 }
 
@@ -803,7 +803,7 @@ h6, .h6, .fz-6 { font-size: 0.94rem; }
 .btn-primary { background-color: #16a3fe; border-color: #16a3fe; }
 .btn-primary:hover { background-color: #23c99d; border-color: #23c99d; }
 .btn-primary.btn-outline:hover { background-color: #16a3fe; border-color: #16a3fe; }
-.btn-secondary { background-color: #23c99d; border-color: #23c99d; }
+.btn-secondary { background-color: #309ec9; border-color: #309ec9; }
 .btn-secondary:hover { background-color: #16a3fe; border-color: #16a3fe; }
 .btn-secondary.btn-outline:hover { background-color: #23c99d; border-color: #23c99d; }
 .btn-info { background-color: #026bfb; border-color: #026bfb; }
@@ -869,7 +869,7 @@ h6, .h6, .fz-6 { font-size: 0.94rem; }
 .badge { color: #fff; background-color: #16a3fe; display: inline-block; font-weight: 600; text-transform: uppercase; border-radius: 20px; padding: 5px 16px; font-size: 13px; line-height: 24px; border: 1px solid #16a3fe; }
 .badge:not(.badge-outline) { color: #fff; }
 .badge-primary { background-color: #16a3fe; border-color: #16a3fe; color: #16a3fe; }
-.badge-secondary { background-color: #23c99d; border-color: #23c99d; color: #23c99d; }
+.badge-secondary { background-color: #16a3fe; border-color: #16a3fe; color: #16a3fe; }
 .badge-info { background-color: #026bfb; border-color: #026bfb; color: #026bfb; }
 .badge-warning, .badge-hot { background-color: #f6be26; border-color: #f6be26; color: #f6be26; }
 .badge-success, .badge-new { background-color: #39d884; border-color: #39d884; color: #39d884; }
@@ -1153,7 +1153,7 @@ ul.progress-info { display: flex; justify-content: space-between; }
 .spinner { display: block; position: relative; left: 50%; top: 50%; width: 70px; height: 70px; margin: -35px 0 0 -35px; z-index: 1001; }
 .spinner-round { border-radius: 50%; border: 2px solid transparent; border-top-color: #16a3fe; animation: spin 2s linear infinite; }
 .spinner-round:before, .spinner-round:after { content: ""; position: absolute; border-radius: 50%; border: 3px solid transparent; }
-.spinner-round:before { top: 5px; left: 5px; right: 5px; bottom: 5px; border-top-color: #23c99d; animation: spin 3s linear infinite; }
+.spinner-round:before { top: 5px; left: 5px; right: 5px; bottom: 5px; border-top-color: #16a3fe; animation: spin 3s linear infinite; }
 .spinner-round:after { top: 15px; left: 15px; right: 15px; bottom: 15px; border-top-color: #122272; animation: spin 1.5s linear infinite; }
 
 @keyframes spin { 0% { -webkit-transform: rotate(0deg); -ms-transform: rotate(0deg); transform: rotate(0deg); }
@@ -1551,7 +1551,7 @@ ul.progress-info { display: flex; justify-content: space-between; }
 .bg-light .roadmap-step:before { border-color: #f6fafd; }
 .has-bg-image .roadmap-step:before { border-color: transparent; }
 .roadmap-head { margin-bottom: 10px; padding-right: 35px; position: relative; }
-.roadmap-finished .roadmap-head:after { position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; line-height: 32px; border-radius: 50%; text-align: center; color: #fff; background: #23c99d; font-family: "Font Awesome 5 Free"; font-weight: 700; font-size: .88rem; content: '\f00c'; }
+.roadmap-finished .roadmap-head:after { position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; line-height: 32px; border-radius: 50%; text-align: center; color: #fff; background: #3bbdc9; font-family: "Font Awesome 5 Free"; font-weight: 700; font-size: .88rem; content: '\f00c'; }
 .roadmap-time { display: block; color: #122272; font-size: 13px; text-transform: uppercase; }
 .tc-light .roadmap-time, .tc-light a:not(.btn) .roadmap-time { color: #16a3fe; }
 .roadmap-title { color: #8ca2e5; font-weight: 700; font-size: 16px; }
@@ -1636,7 +1636,7 @@ ul.progress-info { display: flex; justify-content: space-between; }
 .team-social { margin: 0 -5px; }
 .team-photo .team-social { position: absolute; bottom: -17px; right: 17px; z-index: 2; text-align: right; }
 .team-social li { padding: 0 4px; display: inline-block; }
-.team-social li a { font-size: 13px; text-align: center; display: inline-block; line-height: 34px; height: 34px; width: 34px; border-radius: 50%; color: #fff; background: #23c99d; box-shadow: 0px 2px 15px 0px rgba(35, 201, 157, 0.5); }
+.team-social li a { font-size: 13px; text-align: center; display: inline-block; line-height: 34px; height: 34px; width: 34px; border-radius: 50%; color: #fff; background: #309ec9; box-shadow: 0px 2px 15px 0px rgba(37, 201, 178, 0.5); }
 .team-social li a:hover { background: #16a3fe; box-shadow: 0px 2px 15px 0px rgba(22, 163, 254, 0.5); }
 .team-social-s2 { margin: 0 -10px; }
 .team-social-s2 li { padding: 0 10px; }
@@ -1719,7 +1719,7 @@ ul.progress-info { display: flex; justify-content: space-between; }
 /** 04.13 WGS */
 .wgs { margin-bottom: 30px; }
 .wgs-title { text-transform: uppercase; color: #1940b0; font-size: 1rem; font-weight: 500; letter-spacing: 0.01em; }
-.tc-light .wgs-title, .tc-light a:not(.btn) .wgs-title { color: #23c99d; }
+.tc-light .wgs-title, .tc-light a:not(.btn) .wgs-title { color: #3bbdc9; }
 .wgs-logo { padding-bottom: 22px; display: inline-block; }
 .wgs-body p { font-size: 0.93em; line-height: 1.71; margin-bottom: 0.75rem; }
 .wgs-body p:last-child { margin-bottom: 0; }

@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@nodelib/fs.stat": "^2.0.2",
     "antd": "^3.23.4",
     "axios": "^0.19.0",
     "babel-eslint": "10.0.1",
+    "cyclist": "^1.0.1",
     "eslint-plugin-babel": "^5.3.0",
     "firebase": "^6.3.0",
     "history": "^4.9.0",

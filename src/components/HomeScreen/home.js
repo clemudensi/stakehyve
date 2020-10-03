@@ -1,5 +1,5 @@
 import React from 'react';
-// import "./airdrop.css";
+// import "./hyve.css";
 import {Link} from "react-router-dom";
 // import Vid4 from "../../assets/images/BNB.svg";
 import Vid4 from "../../assets/images/EOS.svg";

@@ -67,7 +67,7 @@
 }
 .blockHead{
         font-weight: bold;
-    background-color: rgb(240, 185, 11);
+    background-color: rgb(48, 158, 201);
     text-transform: uppercase;
     /*margin-bottom: 10px;*/
     margin-bottom: 16px !important;
@@ -207,7 +207,7 @@ img {
     width: 500px;
     }
     .pricing {
-    color: #04b168;
+    color: #16a3fe;
     font-weight: bold;
 }
 .doc-text{

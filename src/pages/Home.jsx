@@ -1,13 +1,12 @@
 import React from 'react';
 import Header from '../components/Header/Assets';
 import Screen from '../components/HomeScreen';
-import Videos from '../components/videosLayout';
-import AirDrop from '../components/Airdrop';
-import How from '../components/getStarted';
+// import Videos from '../components/videosLayout';
+import AirDrop from '../components/Hyve';
+// import How from '../components/getStarted';
 import Footer from '../components/Footer';
 
 const Home = ( ) => {
-
 
   return(
     <div className="bg-theme">
@@ -17,9 +16,9 @@ const Home = ( ) => {
           <Screen/>
         </header>
         <main className="nk-pages tc-light">
-          <Videos/>
+          {/*<Videos/>*/}
           <AirDrop/>
-          <How/>
+          {/*<How/>*/}
         </main>
         <Footer/>
         

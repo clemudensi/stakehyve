@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../components/Header/settings';
 import Screen from '../components/HomeScreen/settings';
 // import Videos from '../components/videosLayout/Assets';
-// import AirDrop from '../components/Airdrop'
+// import AirDrop from '../components/Hyve'
 
 const Assets = () => {
 

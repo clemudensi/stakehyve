@@ -1,5 +1,5 @@
 import React from 'react';
-// import "./airdrop.css";
+// import "./hyve.css";
 import {Link} from "react-router-dom";
 import {Tabs, Icon} from 'antd';
 
