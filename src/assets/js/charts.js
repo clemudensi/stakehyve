@@ -2,7 +2,7 @@
  * Charts - ICOCrypto v1.6.0 by Softnio.
 **/
 NioApp = (function (NioApp, $, window) {
-    "use strict";
+    'use strict';
 	var $chart = $('.chart-data'), $chart_s2 = $('.chart-data-s2');
     
 	NioApp.Chart = {};
@@ -12,20 +12,20 @@ NioApp = (function (NioApp, $, window) {
         
         NioApp.Chart.ChartJs.Doughnut = function (_canvas, _titles, _colors, _amounts, _canvas_border) {
             if ($('#'+_canvas).length) {
-                var _canvas_el = document.getElementById(_canvas).getContext("2d");
+                var _canvas_el = document.getElementById(_canvas).getContext('2d');
                 var doughnut_chart = new Chart(_canvas_el, {
                     type: 'doughnut',
                     data: {
                         labels: _titles,
-                        datasets: [{
-                            label: "949",
+                        datasets: [ {
+                            label: '949',
                             lineTension: 0,
                             backgroundColor: _colors,
                             borderColor: _canvas_border,
                             borderWidth:2,
                             hoverBorderColor:_canvas_border,
                             data: _amounts,
-                        }]
+                        } ]
                     },
                     options: {
                         legend: {
@@ -41,10 +41,10 @@ NioApp = (function (NioApp, $, window) {
                         tooltips: {
                             callbacks: {
                                 title: function(tooltipItem, data) {
-                                    return data['labels'][tooltipItem[0]['index']];
+                                    return data[ 'labels' ][ tooltipItem[ 0 ][ 'index' ] ];
                                 },
                                 label: function(tooltipItem, data) {
-                                    return data['datasets'][0]['data'][tooltipItem['index']] + ' %';
+                                    return data[ 'datasets' ][ 0 ][ 'data' ][ tooltipItem[ 'index' ] ] + ' %';
                                 }
                             },
                             backgroundColor: '#eff6ff',
@@ -67,13 +67,13 @@ NioApp = (function (NioApp, $, window) {
         // @since v1.6
         NioApp.Chart.ChartJs.Pie = function (_canvas, _label, _title, _colors, _colors_hover, _amounts, _canvas_border) {
             if ($('#'+_canvas).length) {
-                var _canvas_el = document.getElementById(_canvas).getContext("2d");
+                var _canvas_el = document.getElementById(_canvas).getContext('2d');
                 
                 var data_set = {
                     labels: _label,
                     titles: _title,
-                    datasets: [{
-                        label: "949",
+                    datasets: [ {
+                        label: '949',
                         lineTension: 0,
                         backgroundColor: _colors,
                         hoverBackgroundColor: _colors_hover,
@@ -82,7 +82,7 @@ NioApp = (function (NioApp, $, window) {
                         hoverBorderColor:_canvas_border,
                         data: _amounts,
                         animationDuration: 400,
-                    }]
+                    } ]
                 };
                 var options_set = {
                     legend: false,
@@ -91,10 +91,10 @@ NioApp = (function (NioApp, $, window) {
                     tooltips: {
                         callbacks: {
                             title: function(tooltipItem, data) {
-                                return data['labels'][tooltipItem[0]['index']];
+                                return data[ 'labels' ][ tooltipItem[ 0 ][ 'index' ] ];
                             },
                             label: function(tooltipItem, data) {
-                                return data['datasets'][0]['data'][tooltipItem['index']] + ' %';
+                                return data[ 'datasets' ][ 0 ][ 'data' ][ tooltipItem[ 'index' ] ] + ' %';
                             }
                         },
                         backgroundColor: 'transparent',
@@ -113,7 +113,7 @@ NioApp = (function (NioApp, $, window) {
                     hover: {
                         onHover: function(e, i) {
                             if(i.length) {
-                            	var _cur_idx = i[0]._index + 1, _self_can = i[0]._chart.canvas.id;
+                            	var _cur_idx = i[ 0 ]._index + 1, _self_can = i[ 0 ]._chart.canvas.id;
                                 $('[data-canvas="'+_self_can+'"] li').removeClass('active');
                                 $('[data-canvas="'+_self_can+'"] li:nth-child('+_cur_idx+')').addClass('active');
                             }

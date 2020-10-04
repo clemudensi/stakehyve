@@ -77,11 +77,18 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { color: #f3f3f3; font-weig
 
 .header-main { padding: 12px 0; }
 .has-fixed:not(.is-dark) .header-main { background: transparent; }
-.has-fixed.is-dark .header-main { background-color: #242b30 !important; box-shadow: none; }
+.has-fixed.is-dark .header-main {
+  background-color: #242b30 !important;
+  box-shadow: none;
+}
 
-.is-dark .header-navbar::before { background: #0b1326; }
+.is-dark .header-navbar::before {
+  background: #0b1326;
+}
 
-.is-dark .menu-sub { background: #0b1326; }
+.is-dark .menu-sub {
+  background: #0b1326;
+}
 
 .menu-sub .menu-item:hover > a, .is-transparent:not(.has-fixed) .menu > .menu-item:hover > a { color: #f42f54; }
 

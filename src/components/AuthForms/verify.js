@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
 const Home = () => {
   return (
-    <>
-      <h1>verification page</h1>
-    </>
+      <>
+          <h1>verification page</h1>
+      </>
   );
 };
 

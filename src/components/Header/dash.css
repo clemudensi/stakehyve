@@ -1,0 +1,49 @@
+.avatar-d{
+    display: inline-block;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 19px;
+      /* font-size: 1.9rem; */
+      font-weight: 300;
+      line-height: 32px;
+      letter-spacing: -1px;
+      text-align: center;
+      text-transform: uppercase;
+      vertical-align: middle;
+      color: #fff;
+      background-color: #156299;
+  }
+
+  .menu-d{
+      top: 12px;
+      margin-left: 15px;
+      font-size: 20px;
+      position: relative;
+  }
+  .menu-lo{
+    margin-bottom: -25px;
+  }
+  .lambda em{
+    color: #0f8959;
+    font-size: 16px;
+    margin-right: 6px;
+  }
+  .dashboard .menu-btns{
+    margin-bottom: -20px !important;
+  }
+  @media (min-width: 992px){
+.dashboard .menu-btns {
+    /* display: f; */
+    margin-bottom: -20px !important;
+    margin-left: 10px;
+}
+  }
+  .settings .has-fixed.is-dark .header-main{
+    background: #1f374a !important;
+  }
+  .has-fixed.is-dark .header-main
+
+  .settings .header-main{
+    background-color: transparent !important;
+  }

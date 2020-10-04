@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 const Header = () => {
     return(
@@ -7,17 +8,17 @@ const Header = () => {
 					<div className="header-wrap">
 						
 						<div className="header-logo logo">
-							<a href="./" className="logo-link">
+							<Link to="/" className="logo-link">
 								<h4>Earnathon</h4>
-							</a>
+							</Link>
 						</div>
 
 						<div className="header-nav-toggle">
-							<a href="#" className="navbar-toggle" data-menu-toggle="header-menu">
+							<Link to="/" className="navbar-toggle" data-menu-toggle="header-menu">
                                 <div className="toggle-line">
                                     <span></span>
                                 </div>
-                            </a>
+                            </Link>
 						</div>
 
 						
@@ -26,30 +27,30 @@ const Header = () => {
 								<ul className="menu">
 									
                                     <li className="menu-item has-sub">
-										<a className="menu-link nav-link menu-toggle" href="#">Category</a>
+										<Link className="menu-link nav-link menu-toggle" to="/">Category</Link>
 										<ul className="menu-sub menu-drop">
-                                              <li className="menu-item"><a href="index-azalea.html">Blockchain<span className="badge badge-xs badge-info">New</span></a></li>
-													<li className="menu-item"><a href="index-azalea-multi.html">ICO<span className="badge badge-xs badge-info">New</span></a></li> 
-													<li className="menu-item"><a href="index-gentian.html">Airdrops</a></li> 
+                                              <li className="menu-item"><Link to="/">Blockchain<span className="badge badge-xs badge-info">New</span></Link></li>
+													<li className="menu-item"><Link to="/">ICO<span className="badge badge-xs badge-info">New</span></Link></li> 
+													<li className="menu-item"><Link to="/">Airdrops</Link></li> 
 										</ul>
 									</li>
 									<li className="menu-item">
-										<a className="menu-link nav-link menu-toggle" href="#">Explore</a>
+										<Link className="menu-link nav-link menu-toggle" to="/">Explore</Link>
 									</li>
 									<li className="menu-item ">
-										<a className="menu-link nav-link menu-toggle" href="#">About</a>
+										<Link className="menu-link nav-link menu-toggle" to="/">About</Link>
 										
 									</li>
 
                                     <li className="menu-item ">
-										<a className="menu-link nav-link " href="#">Contact</a>
+										<Link className="menu-link nav-link " to="/">Contact</Link>
 									</li>
 									
 									
 								</ul>
                                 <ul className="menu-btns show-xs">
-                                    <li><a href="#" data-toggle="modal" data-target="#login-popup" className="bt-started"><span>Sign in</span></a></li>
-                                    <li><a href="#" data-toggle="modal" data-target="#login-popup" className="bt-started"><span>Get Started</span></a></li>
+                                    <li><Link to="/signin" data-toggle="modal" data-target="#login-popup" className="bt-started"><span>Sign in</span></Link></li>
+                                    <li><Link to="/signup" data-toggle="modal" data-target="#login-popup" className="bt-started"><span>Get Started</span></Link></li>
 
                                 </ul>
 								
@@ -57,8 +58,8 @@ const Header = () => {
 
 						<div className="header-navbar-overlay"></div></div>
                         <ul className="menu-btns show-lg">
-                            <li><a href="" style={{color: "#fff"}}>Sign in</a></li>
-                                    <li><a href="#" className="bt-started"><span>Get Started</span></a></li>
+						<li><Link to="/signup" className="bt-started"><span>Get Started</span></Link></li>
+                            <li><Link to="/signin" style={{color: "#fff"}}>Sign in</Link></li>
                                 </ul>
 					</div>                                                
 				</div>

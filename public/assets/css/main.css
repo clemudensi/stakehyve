@@ -1,7 +1,7 @@
 @media (max-width:992px) {
-	.show-lg{
-		display: none;
-	}
+    .show-lg{
+        display: none;
+    }
 
 }
 .section-head-s2{
@@ -19,8 +19,8 @@
     width: 300px;
     -o-object-position: 2em 0 !important;
     object-position: 2em 0 !important;
-	}
-	
+    }
+    
 .right-bars {
     margin-right: 0;
     top: -2em !important;
@@ -33,7 +33,15 @@
     opacity: 0.5;
 }
 .mt-small-30{
-	    margin-top: 30px;
+        margin-top: 30px;
+}
+.ard-3 {
+    margin-right: 0;
+    top: 10em;
+    right: 0;
+    position: absolute;
+    width: 400px;
+    overflow: hidden;
 }
 
 .left-bars>img {
@@ -47,9 +55,9 @@
 
 }
 @media (min-width:992px) {
-	.show-xs{
-		display: none;
-	}
+    .show-xs{
+        display: none;
+    }
 }
 
       .left-bars {
@@ -59,7 +67,7 @@
 }
 .blockHead{
         font-weight: bold;
-    background-color: rgb(240, 185, 11);
+    background-color: rgb(48, 158, 201);
     text-transform: uppercase;
     /*margin-bottom: 10px;*/
     margin-bottom: 16px !important;
@@ -100,7 +108,7 @@ img {
     border-style: none;
 }
 #ecosystems{
- background: #343d45;
+ background: no-repeat;
 }
 
                     .yala{
@@ -109,16 +117,28 @@ img {
     cursor: pointer;
     display: flex;
     margin-bottom: 24px;
-    background: #434f5a;
+    /*background: #131418 !important;*/
     border-radius: 8px;
     border-width: 1px;
     border-style: solid;
-    border-color: #434f5a;
+    border-color: #242b30;
     border-image: initial;
     transition: box-shadow 500ms ease 0s, opacity 500ms ease 0s;
     overflow: hidden;
     max-width: 900px;
     margin: 0 auto;
+    -webkit-transform: scale(.97);
+    transform: scale(.97);
+    transition: background .3s ease,-webkit-transform .3s ease;
+    transition: transform .3s ease,background .3s ease;
+    transition: transform .3s ease,background .3s ease,-webkit-transform .3s ease;
+   }
+  
+   .yala:hover, .yala:active, .yala:focus{
+    background: #1e1f26 !important;
+    border-bottom-color: transparent;
+    transform: scale(1);
+    border-radius: 4px;
                     }
                     .coverImage {
     width: 50%;
@@ -178,6 +198,17 @@ img {
     padding: 10px;
     display: block;
     width: 100px;
+}
+.ard-4 {
+    margin-right: 0;
+    top: -7em;
+    right: 0;
+    position: absolute;
+    width: 500px;
+    }
+    .pricing {
+    color: #16a3fe;
+    font-weight: bold;
 }
 .doc-text{
     text-align: center;

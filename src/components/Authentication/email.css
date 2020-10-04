@@ -1,0 +1,16 @@
+img{
+    height: auto;
+    width: 126px;
+    margin: auto;
+    display: block
+}
+h2{
+    text-align: center;
+}
+p{
+  text-align: center;
+  /* color: grey; */
+}
+.gx-login-container{
+    background: #fff !important;
+}

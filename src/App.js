@@ -1,37 +1,48 @@
-import React from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import SignUp from "./components/AuthForms/signup";
-import Login from "./components/AuthForms/index";
-import verify from "./components/AuthForms/verify";
-import Login2 from "./components/Authentication/login";
-import SignUp2 from "./components/Authentication/signup";
-import emailV from "./components/Authentication/emailVerify";
-import forgot from "./components/Authentication/forgot";
-import Home from "./pages/Home";
-import Assets from "./pages/AllAssets";
-// import "./assets/css/style.css";
-// import "./assets/css/main.css";
-// import "./assets/css/rtl.css";
-// import "./assets/css/azalea.css";
-// import "./assets/css/vendor.bundle.css";
+import React, { Fragment } from 'react';
+import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom';
+import Routes from './routes';
+import ProtectedRoutes from './routes/protected';
+import MyLoader from './components/shared/loaders';
+import Home from './pages/Home';
+// import Homer from './components/notFound/NotFound';
+import allAsset from './pages/AllAssets';
+import Asset from './pages/Assets';
+import withAuth from './HOC/WithAuth';
+import 'antd/dist/antd.css'
 
-const App = () => {
+const App = (props) => {
 
-  
   return (
-    <Router>
-    <div>
-      {/* <PrivateRoute exact path="/" component={Home} /> */}
-      <Route exact path="/signup" component={SignUp2} />
-      <Route exact path="/signin" component={Login2} />
-      <Route exact path="/assets" component={Assets} />
-      <Route exact  path="/" component={Home} />
-      <Route exact  path="/verify" component={emailV} />
-      <Route exact  path="/forgot" component={forgot} />
-      {/* <Route exact  path="/verification" scomponent={verify} /> */}
-    </div>
-  </Router>
+    <Fragment>
+      <React.Suspense fallback={<MyLoader />}>
+        <Router>
+          <Route exact  path="/" component={ Home} />
+          <Route exact  path="/load" component={ MyLoader } />
+          <Route exact  path="/explore" component={ allAsset } />
+          <Route exact  path="/assets/:coin" component={ Asset } />
+          {/* <Route exact  path="*" component={ Homer } /> */}
+          {/* <Route exact  path="/" component={ Home } />
+          <Route exact  path="/" component={ Home } /> */}
+          <Route>
+            {ProtectedRoutes.map((routeProps, key) => (
+              <Route
+                key={key}
+                path={routeProps.path}
+                render={(renderProps)=> <routeProps.render key={key} {...renderProps} {...props} />}
+              />
+            ))}
+            {Routes.map((routeProps, key) => (
+              <Route
+                key={key}
+                path={routeProps.path}
+                render={(renderProps)=> <routeProps.render key={key} {...renderProps} {...props} />}
+              />
+            ))}
+          </Route>
+        </Router>
+      </React.Suspense>
+    </Fragment>
   );
-}
+};
 
-export default App;
+export default withRouter(withAuth(App));

@@ -1717,7 +1717,7 @@ ul.progress-info { display: flex; justify-content: space-between; }
 /** 04.13 WGS */
 .wgs { margin-bottom: 30px; }
 .wgs-title { text-transform: uppercase; color: #1940b0; font-size: 1rem; font-weight: 500; letter-spacing: 0.01em; }
-.tc-light .wgs-title, .tc-light a:not(.btn) .wgs-title { color: #23c99d; }
+.tc-light .wgs-title, .tc-light a:not(.btn) .wgs-title { color: #309ec9; }
 .wgs-logo { padding-bottom: 22px; display: inline-block; }
 .wgs-body p { font-size: 0.93em; line-height: 1.71; margin-bottom: 0.75rem; }
 .wgs-body p:last-child { margin-bottom: 0; }
